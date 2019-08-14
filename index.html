@@ -1,427 +1,464 @@
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="None">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>MuseNet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/assets/styles/all.css?v=d173e9aa13" />
   
-  <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Home - PocketFlow Docs</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <meta name="description" content="We’ve created Musenet, a deep neural network that can generate 4-minute musical compositions with 10 different instruments and can combine styles from country to Mozart to the Beatles." />
+    <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://openai.com/blog/musenet/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="OpenAI" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="MuseNet" />
+    <meta property="og:description" content="We’ve created Musenet, a deep neural network that can generate 4-minute musical compositions with 10 different instruments and can combine styles from country to Mozart to the Beatles." />
+    <meta property="og:url" content="https://openai.com/blog/musenet/" />
+    <meta property="og:image" content="https://openai.com/content/images/2019/04/Screen-Shot-2019-04-25-at-7.37.40-AM-1.png" />
+    <meta property="article:published_time" content="2019-04-25T16:29:16.000Z" />
+    <meta property="article:modified_time" content="2019-06-10T19:16:26.000Z" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/openai.research" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MuseNet" />
+    <meta name="twitter:description" content="We’ve created Musenet, a deep neural network that can generate 4-minute musical compositions with 10 different instruments and can combine styles from country to Mozart to the Beatles." />
+    <meta name="twitter:url" content="https://openai.com/blog/musenet/" />
+    <meta name="twitter:image" content="https://openai.com/content/images/2019/04/Screen-Shot-2019-04-25-at-7.37.40-AM.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Christine Payne" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="" />
+    <meta name="twitter:site" content="@openai" />
+    <meta property="og:image:width" content="1030" />
+    <meta property="og:image:height" content="1302" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "OpenAI",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://openai.com/content/images/2019/05/openai-avatar.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Christine Payne",
+        "url": "https://openai.com/blog/authors/christine/",
+        "sameAs": []
+    },
+    "headline": "MuseNet",
+    "url": "https://openai.com/blog/musenet/",
+    "datePublished": "2019-04-25T16:29:16.000Z",
+    "dateModified": "2019-06-10T19:16:26.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://openai.com/content/images/2019/04/2x-no-mark.jpg",
+        "width": 1276,
+        "height": 1696
+    },
+    "description": "We’ve created MuseNet, a deep neural network that can generate 4-minute musical compositions with 10 different instruments, and can combine styles from country to Mozart to the Beatles.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://openai.com/"
+    }
+}
+    </script>
 
-  <link rel="stylesheet" href="css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Home";
-    var mkdocs_page_input_path = "index.md";
-    var mkdocs_page_url = null;
-  </script>
-  
-  <script src="js/jquery-2.1.1.min.js" defer></script>
-  <script src="js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
+    <script src="/public/ghost-sdk.min.js?v=d173e9aa13"></script>
+<script>
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "15131ca56980"
+});
+</script>
+    <meta name="generator" content="Ghost 2.27" />
+    <link rel="alternate" type="application/rss+xml" title="OpenAI" href="https://openai.com/blog/rss/" />
+    <link rel="stylesheet" href="https://d4mucfpksywv.cloudfront.net/musenet/visualization/composer-embeddings.css">
+<style>
+  #fa2 .disclaimer {
+    display: none;
+  }
+</style>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/images/favicon.png">
 </head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-
+<body>
+  <main>
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-      <div class="wy-side-nav-search">
-        <a href="." class="icon icon-home"> PocketFlow Docs</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
-  </form>
-</div>
+<article class="post" id="post-musenet">
+  
+  <header
+    class="post-header post-header--cover bg-cover"
+    style="background-image:url(https://d4mucfpksywv.cloudfront.net/research-covers/musenet/gradient.jpg)"
+  >
+  <nav class="nav js-nav">
+  <div class="container">
+    <div class="nav-row row d-flex justify-content-between align-items-center">
+      <div class="col-2">
+        <a href="/" class="nav-symbol fade"><svg id="openai-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 51"><path d="M47.21,20.92a12.65,12.65,0,0,0-1.09-10.38A12.78,12.78,0,0,0,32.36,4.41,12.82,12.82,0,0,0,10.64,9a12.65,12.65,0,0,0-8.45,6.13,12.78,12.78,0,0,0,1.57,15A12.64,12.64,0,0,0,4.84,40.51a12.79,12.79,0,0,0,13.77,6.13,12.65,12.65,0,0,0,9.53,4.25A12.8,12.8,0,0,0,40.34,42a12.66,12.66,0,0,0,8.45-6.13A12.8,12.8,0,0,0,47.21,20.92ZM28.14,47.57a9.46,9.46,0,0,1-6.08-2.2l.3-.17,10.1-5.83a1.68,1.68,0,0,0,.83-1.44V23.69l4.27,2.47a.15.15,0,0,1,.08.11v11.8A9.52,9.52,0,0,1,28.14,47.57ZM7.72,38.85a9.45,9.45,0,0,1-1.13-6.37l.3.18L17,38.49a1.63,1.63,0,0,0,1.65,0L31,31.37V36.3a.17.17,0,0,1-.07.13L20.7,42.33A9.51,9.51,0,0,1,7.72,38.85Zm-2.66-22a9.48,9.48,0,0,1,5-4.17v12a1.62,1.62,0,0,0,.82,1.43L23.17,33.2,18.9,35.67a.16.16,0,0,1-.15,0L8.54,29.78A9.52,9.52,0,0,1,5.06,16.8ZM40.14,25,27.81,17.84l4.26-2.46a.16.16,0,0,1,.15,0l10.21,5.9A9.5,9.5,0,0,1,41,38.41v-12A1.67,1.67,0,0,0,40.14,25Zm4.25-6.39-.3-.18L34,12.55a1.64,1.64,0,0,0-1.66,0L20,19.67V14.74a.14.14,0,0,1,.06-.13L30.27,8.72a9.51,9.51,0,0,1,14.12,9.85ZM17.67,27.35,13.4,24.89a.17.17,0,0,1-.08-.12V13a9.51,9.51,0,0,1,15.59-7.3l-.3.17-10.1,5.83a1.68,1.68,0,0,0-.83,1.44Zm2.32-5,5.5-3.17L31,22.35v6.34l-5.49,3.17L20,28.69Z"/></svg></a>
       </div>
-
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1 current">
-		
-    <a class="current" href=".">Home</a>
-    <ul class="subnav">
+      <div class="col" hidden>
+        <a href="/" class="nav-wordmark fade"><svg id="openai-wordmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 180"><path d="M410.22,41.09c-13.75,0-23.57,4.7-28.39,13.59l-2.59,4.79V43.41h-22.4v97.85H380.4V83.05c0-13.91,7.55-21.89,20.73-21.89,12.56,0,19.76,7.76,19.76,21.31v58.79h23.56v-63C444.45,55,431.65,41.09,410.22,41.09ZM296,41.09c-27.79,0-45.06,17.33-45.06,45.25v13.74c0,26.83,17.42,43.51,45.45,43.51,18.74,0,31.88-6.88,40.15-21l-14.61-8.39c-6.11,8.15-15.86,13.19-25.54,13.19-14.19,0-22.67-8.76-22.67-23.44v-3.89h65.79V83.82c0-26-17.08-42.73-43.51-42.73Zm22.08,43.14H273.72V81.89c0-16.12,7.91-25,22.28-25,13.83,0,22.08,8.76,22.08,23.44ZM678.32,27.3V8.58H596.87V27.3h28.56v95.25H596.87v18.71h81.45V122.55H649.76V27.3ZM60.67,5.87c-36.39,0-59,22.68-59,59.18V84.79c0,36.51,22.6,59.18,59,59.18s59-22.67,59-59.18V65.05C119.66,28.55,97.05,5.87,60.67,5.87ZM95.33,86.14c0,24.24-12.63,38.15-34.66,38.15S26,110.38,26,86.14V63.7c0-24.24,12.63-38.15,34.66-38.15S95.32,39.46,95.32,63.7Zm98.31-45c-12.36,0-23.07,5.11-28.64,13.69l-2.54,3.9V43.41H140.07V174.93h23.55V127.3l2.53,3.74c5.3,7.85,15.65,12.55,27.68,12.55,20.31,0,40.8-13.28,40.8-42.93V84c0-21.35-12.63-42.91-41-42.91Zm17.44,58.4c0,15.77-9.2,25.57-24,25.57-13.8,0-23.44-10.35-23.44-25.18V85.23c0-15.06,9.72-25.57,23.63-25.57,14.7,0,23.83,9.8,23.83,25.57ZM509.55,8.63,462,141.26h23.9l9.1-28.44h54.65l.09.28,9,28.16h23.93L535.08,8.58Zm-8.67,85.52L522.32,27l21.23,67.07Z"/></svg></a>
+      </div>
+      <div class="col-auto">
+        <ul class="nav-items d-none d-desktop-flex justify-content-end small-caps">
+                        
+            <li class="nav-item">
+              <a class="fade" href="/about/">About</a>
+            </li>
             
-    <li class="toctree-l2"><a href="#pocketflow">PocketFlow</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#framework">Framework</a></li>
-        
-            <li><a class="toctree-l3" href="#learners">Learners</a></li>
-        
-            <li><a class="toctree-l3" href="#hyper-parameter-optimizers">Hyper-parameter Optimizers</a></li>
-        
-            <li><a class="toctree-l3" href="#performance">Performance</a></li>
-        
+            <li class="nav-item">
+              <a class="fade" href="/progress/">Progress</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="fade" href="/resources/">Resources</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="fade" href="/blog/">Blog</a>
+            </li>
         </ul>
-    
-
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="installation/">Installation</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="tutorial/">Tutorial</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Learners - Algorithms</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="cp_learner/">Channel Pruning</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="cpr_learner/">Channel Pruning - Remastered</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="dcp_learner/">Discrimination-aware Channel Pruning</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="ws_learner/">Weight Sparsification</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="uq_learner/">Uniform Quantization</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="nuq_learner/">Non-uniform Quantization</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Learners - Misc.</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="distillation/">Distillation</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="multi_gpu_training/">Multi-GPU Training</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Hyper-parameter Optimizers</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="reinforcement_learning/">Reinforcement Learning</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="automl_based_methods/">AutoML-based Methods</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="self_defined_models/">Self-defined Models</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="performance/">Performance</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="faq/">Frequently Asked Questions</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Appendix</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="pre_trained_models/">Pre-trained Models</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="test_cases/">Test Cases</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="reference/">Reference</a>
-                </li>
-    </ul>
-	    </li>
-          
-        </ul>
+        <button class="nav-toggle nav-toggle--open js-mobile-nav-open fade d-desktop-none"><svg id="mobile-nav-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22,13H2a1,1,0,0,1,0-2H22a1,1,0,0,1,0,2Z"/><path d="M22,6H2A1,1,0,0,1,2,4H22a1,1,0,0,1,0,2Z"/><path d="M22,20H2a1,1,0,0,1,0-2H22a1,1,0,0,1,0,2Z"/></svg></button>
       </div>
-      &nbsp;
-    </nav>
+    </div>
+  </div>
+</nav>
+<nav class="mobile-nav js-mobile-nav">
+  <div class="container">
+    <div class="nav-row row d-flex justify-content-between align-items-center">
+      <div class="col-2">
+      </div>
+      <div class="col-auto">
+        <button class="nav-toggle nav-toggle--close js-mobile-nav-close"><svg id="mobile-nav-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path id="Glyph" d="M19.77,5.63,13.41,12l6.36,6.37a1,1,0,0,1-1.41,1.41L12,13.41,5.63,19.77a1,1,0,0,1-1.44-1.39l0,0L10.58,12,4.21,5.63a1,1,0,0,1,0-1.42,1,1,0,0,1,1.41,0l0,0L12,10.58l6.37-6.37a1,1,0,0,1,1.41,0A1,1,0,0,1,19.77,5.63Z"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div class="container font-large">
+    <ul class="mt-0.25 small-caps">
+                
+          <li>
+            <a class="fade d-block py-0.75" href="/about/">About</a>
+          </li>
+          <hr>
+        
+          <li>
+            <a class="fade d-block py-0.75" href="/progress/">Progress</a>
+          </li>
+          <hr>
+        
+          <li>
+            <a class="fade d-block py-0.75" href="/resources/">Resources</a>
+          </li>
+          <hr>
+        
+          <li>
+            <a class="fade d-block py-0.75" href="/blog/">Blog</a>
+          </li>
+          <hr>
+      <li>
+        <a class="fade d-block py-0.75" href="/jobs/">Jobs</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href=".">PocketFlow Docs</a>
-      </nav>
+  
+  <div class="container">
+    <hr class="mb-1 js-nav-fold">
+    <div class="row mb-2">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-9 col-sm-8 col-md-5 col-xl-4 offset-xl-1">
+            
+<figure class="release-cover mb-1 rounded shadowed-heavy mb-0">
+    <img
+      src="https://d4mucfpksywv.cloudfront.net/research-covers/musenet/1x-no-mark.jpg"
+      srcset="https://d4mucfpksywv.cloudfront.net/research-covers/musenet/1x-no-mark.jpg 1x,
+              https://d4mucfpksywv.cloudfront.net/research-covers/musenet/2x-no-mark.jpg 2x"
+      alt="MuseNet">
+</figure>
 
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href=".">Docs</a> &raquo;</li>
-    
-      
-    
-    <li>Home</li>
-    <li class="wy-breadcrumbs-aside">
-      
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main">
-            <div class="section">
-              
-                <h1 id="pocketflow">PocketFlow</h1>
-<p>PocketFlow is an open-source framework for compressing and accelerating deep learning models with minimal human effort. Deep learning is widely used in various areas, such as computer vision, speech recognition, and natural language translation. However, deep learning models are often computational expensive, which limits further applications on mobile devices with limited computational resources.</p>
-<p>PocketFlow aims at providing an easy-to-use toolkit for developers to improve the inference efficiency with little or no performance degradation. Developers only needs to specify the desired compression and/or acceleration ratios and then PocketFlow will automatically choose proper hyper-parameters to generate a highly efficient compressed model for deployment.</p>
-<h2 id="framework">Framework</h2>
-<p>The proposed framework mainly consists of two categories of algorithm components, <em>i.e.</em> learners and hyper-parameter optimizers, as depicted in the figure below. Given an uncompressed original model, the learner module generates a candidate compressed model using some randomly chosen hyper-parameter combination. The candidate model's accuracy and computation efficiency is then evaluated and used by hyper-parameter optimizer module as the feedback signal to determine the next hyper-parameter combination to be explored by the learner module. After a few iterations, the best one of all the candidate models is output as the final compressed model.</p>
-<p><img alt="Framework Design" src="pics/framework_design.png" /></p>
-<h2 id="learners">Learners</h2>
-<p>A learner refers to some model compression algorithm augmented with several training techniques as shown in the figure above. Below is a list of model compression algorithms supported in PocketFlow:</p>
-<table>
-<thead>
-<tr>
-<th align="left">Name</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left"><code>ChannelPrunedLearner</code></td>
-<td align="left">channel pruning with LASSO-based channel selection (He et al., 2017)</td>
-</tr>
-<tr>
-<td align="left"><code>DisChnPrunedLearner</code></td>
-<td align="left">discrimination-aware channel pruning (Zhuang et al., 2018)</td>
-</tr>
-<tr>
-<td align="left"><code>WeightSparseLearner</code></td>
-<td align="left">weight sparsification with dynamic pruning schedule (Zhu &amp; Gupta, 2017)</td>
-</tr>
-<tr>
-<td align="left"><code>UniformQuantLearner</code></td>
-<td align="left">weight quantization with uniform reconstruction levels (Jacob et al., 2018)</td>
-</tr>
-<tr>
-<td align="left"><code>UniformQuantTFLearner</code></td>
-<td align="left">weight quantization with uniform reconstruction levels and TensorFlow APIs</td>
-</tr>
-<tr>
-<td align="left"><code>NonUniformQuantLearner</code></td>
-<td align="left">weight quantization with non-uniform reconstruction levels (Han et al., 2016)</td>
-</tr>
-</tbody>
-</table>
-<p>All the above model compression algorithms can trained with fast fine-tuning, which is to directly derive a compressed model from the original one by applying either pruning masks or quantization functions. The resulting model can be fine-tuned with a few iterations to recover the accuracy to some extent. Alternatively, the compressed model can be re-trained with the full training data, which leads to higher accuracy but usually takes longer to complete.</p>
-<p>To further reduce the compressed model's performance degradation, we adopt network distillation to augment its training process with an extra loss term, using the original uncompressed model's outputs as soft labels. Additionally, multi-GPU distributed training is enabled for all learners to speed-up the time-consuming training process.</p>
-<h2 id="hyper-parameter-optimizers">Hyper-parameter Optimizers</h2>
-<p>For model compression algorithms, there are several hyper-parameters that may have a large impact on the final compressed model's performance. It can be quite difficult to manually determine proper values for these hyper-parameters, especially for developers that are not very familiar with algorithm details. Recently, several AutoML systems, <em>e.g.</em> <a href="https://cloud.google.com/automl/">Cloud AutoML</a> from Google, have been developed to train high-quality machine learning models with minimal human effort. Particularly, the AMC algorithm (He et al., 2018) presents promising results for adopting reinforcement learning for automated model compression with channel pruning and fine-grained pruning.</p>
-<p>In PocketFlow, we introduce the hyper-parameter optimizer module to iteratively search for the optimal hyper-parameter setting. We provide several implementations of hyper-parameter optimizer, based on models including Gaussian Processes (GP, Mockus, 1975), Tree-structured Parzen Estimator (TPE, Bergstra et al., 2013), and Deterministic Deep Policy Gradients (DDPG, Lillicrap et al., 2016). The hyper-parameter setting is optimized through an iterative process. In each iteration, the hyper-parameter optimizer chooses a combination of hyper-parameter values, and the learner generates a candidate model with fast fast-tuning. The candidate model is evaluated to calculate the reward of the current hyper-parameter setting. After that, the hyper-parameter optimizer updates its model to improve its estimation on the hyper-parameter space. Finally, when the best candidate model (and corresponding hyper-parameter setting) is selected after some iterations, this model can be re-trained with full data to further reduce the performance loss.</p>
-<h2 id="performance">Performance</h2>
-<p>In this section, we present some of our results for applying various model compression methods for ResNet and MobileNet models on the ImageNet classification task, including channel pruning, weight sparsification, and uniform quantization.
-For complete evaluation results, please refer to <a href="https://pocketflow.github.io/performance/">here</a>.</p>
-<h3 id="channel-pruning">Channel Pruning</h3>
-<p>We adopt the DDPG algorithm as the RL agent to find the optimal layer-wise pruning ratios, and use group fine-tuning to further improve the compressed model's accuracy:</p>
-<table>
-<thead>
-<tr>
-<th align="center">Model</th>
-<th align="center">FLOPs</th>
-<th align="center">Uniform</th>
-<th align="center">RL-based</th>
-<th align="center">RL-based + Group Fine-tuning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">MobileNet-v1</td>
-<td align="center">50%</td>
-<td align="center">66.5%</td>
-<td align="center">67.8% (+1.3%)</td>
-<td align="center">67.9% (+1.4%)</td>
-</tr>
-<tr>
-<td align="center">MobileNet-v1</td>
-<td align="center">40%</td>
-<td align="center">66.2%</td>
-<td align="center">66.9% (+0.7%)</td>
-<td align="center">67.0% (+0.8%)</td>
-</tr>
-<tr>
-<td align="center">MobileNet-v1</td>
-<td align="center">30%</td>
-<td align="center">64.4%</td>
-<td align="center">64.5% (+0.1%)</td>
-<td align="center">64.8% (+0.4%)</td>
-</tr>
-<tr>
-<td align="center">Mobilenet-v1</td>
-<td align="center">20%</td>
-<td align="center">61.4%</td>
-<td align="center">61.4% (+0.0%)</td>
-<td align="center">62.2% (+0.8%)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="weight-sparsification">Weight Sparsification</h3>
-<p>Comparing with the original algorithm (Zhu &amp; Gupta, 2017) which uses the same sparsity for all layers, we incorporate the DDPG algorithm to iteratively search for the optimal sparsity of each layer, which leads to the increased accuracy:</p>
-<table>
-<thead>
-<tr>
-<th align="center">Model</th>
-<th align="center">Sparsity</th>
-<th align="center">(Zhu &amp; Gupta, 2017)</th>
-<th align="center">RL-based</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">MobileNet-v1</td>
-<td align="center">50%</td>
-<td align="center">69.5%</td>
-<td align="center">70.5% (+1.0%)</td>
-</tr>
-<tr>
-<td align="center">MobileNet-v1</td>
-<td align="center">75%</td>
-<td align="center">67.7%</td>
-<td align="center">68.5% (+0.8%)</td>
-</tr>
-<tr>
-<td align="center">MobileNet-v1</td>
-<td align="center">90%</td>
-<td align="center">61.8%</td>
-<td align="center">63.4% (+1.6%)</td>
-</tr>
-<tr>
-<td align="center">MobileNet-v1</td>
-<td align="center">95%</td>
-<td align="center">53.6%</td>
-<td align="center">56.8% (+3.2%)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="uniform-quantization">Uniform Quantization</h3>
-<p>We show that models with 32-bit floating-point number weights can be safely quantized into their 8-bit counterpart without accuracy loss (sometimes even better!).
-The resulting model can be deployed on mobile devices for faster inference (Device: XiaoMi 8 with a Snapdragon 845 CPU):</p>
-<table>
-<thead>
-<tr>
-<th align="center">Model</th>
-<th align="center">Acc. (32-bit)</th>
-<th align="center">Acc. (8-bit)</th>
-<th align="center">Time (32-bit)</th>
-<th align="center">Time (8-bit)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">MobileNet-v1</td>
-<td align="center">70.89%</td>
-<td align="center">71.29% (+0.40%)</td>
-<td align="center">124.53</td>
-<td align="center">56.12 (2.22<span><span class="MathJax_Preview">\times</span><script type="math/tex">\times</script></span>)</td>
-</tr>
-<tr>
-<td align="center">MobileNet-v2</td>
-<td align="center">71.84%</td>
-<td align="center">72.26% (+0.42%)</td>
-<td align="center">120.59</td>
-<td align="center">49.04 (2.46<span><span class="MathJax_Preview">\times</span><script type="math/tex">\times</script></span>)</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>All the reported time are in milliseconds.</li>
-</ul>
-              
+
+          </div>
+          <div class="col-12 col-md-7 col-xl-6">
+            <div class="h-100 d-flex flex-column justify-content-between last-child-mb-1">
+                  <div>
+                      <h1 class="balance-text mb-0.5">MuseNet</h1>
+                      <div class="post-excerpt medium-copy mb-0.5 color-fg-80 js-excerpt-container js-widow">
+  </div>
+                  </div>
+                    <div class="xsmall-caps color-fg-40 mt-0.25 mb-1">
+    <time datetime="2019-04-25">April 25, 2019</time>
+    <div class="reading-time">6 minute read</div>
+  </div>
+
             </div>
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="installation/" class="btn btn-neutral float-right" title="Installation">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-    </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-    
-  </div>
-
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-      
         </div>
       </div>
-
-    </section>
-
+    </div>
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-      
-        <span style="margin-left: 15px"><a href="installation/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
-</div>
-    <script>var base_url = '.';</script>
-    <script src="js/theme.js" defer></script>
-      <script src="mathjax-config.js" defer></script>
-      <script src="MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
-      <script src="search/main.js" defer></script>
+  
+</header>
 
+  <section class="container">
+  <div class="row">
+    <section class="content">
+      <!--kg-card-begin: markdown--><div class="js-excerpt">
+<p>We've created MuseNet, a deep neural network that can generate 4-minute musical compositions with 10 different instruments, and can combine styles from country to Mozart to the Beatles. MuseNet was not explicitly programmed with our understanding of music, but instead discovered patterns of harmony, rhythm, and style by learning to predict the next token in hundreds of thousands of MIDI files. MuseNet uses the same general-purpose unsupervised technology as <a href="https://openai.com/blog/better-language-models/">GPT-2</a>, a large-scale <a href="https://arxiv.org/abs/1706.03762">transformer</a> model trained to predict the next token in a sequence, whether audio or text.</p>
+</div>
+<h2 id="samples">Samples</h2>
+<section>
+<!-- Prompted with first 10 tokens of Chopin Op. 10, No. 9 -->
+<hr class="my-0.5">
+<iframe class="mb-0" width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/609806943&color=%23ff5500&inverse=false&auto_play=false&show_user=false"></iframe>
+<hr class="my-0.5">
+<!-- Prompted with "Jazz piano-bass-drums" -->
+<iframe class="mb-0" width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/608630034&color=%23ff5500&inverse=false&auto_play=false&show_user=false"></iframe>
+<hr class="my-0.5">
+<!-- Genre: Bluegrass -->
+<iframe class="mb-0" width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/610595778&color=%23ff5500&inverse=false&auto_play=false&show_user=false"></iframe>
+<hr class="my-0.5">    
+<!-- Prompted with first 10 tokens of Rachmaninoff -->
+<iframe class="mb-0" width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/609829641&color=%23ff5500&inverse=false&auto_play=false&show_user=false"></iframe>
+<hr class="my-0.5">
+</section>
+<p>Since MuseNet knows many different styles, we can blend generations in novel ways<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>. Here the model is given the first 6 notes of a Chopin Nocturne, but is asked to generate a piece in a pop style with piano, drums, bass, and guitar. The model manages to blend the two styles convincingly, with the full band joining in at around the 30 second mark:</p>
+<section>
+<hr class="my-0.5">
+<!-- Prompted with "Pop" and first 12 tokens of Chopin Op. 27, No. 2 -->
+<iframe class="mb-0" width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/608629956&color=%23ff5500&inverse=false&auto_play=false&show_user=false"></iframe>
+<hr class="my-0.5">
+</section>
+<h2 id="try">Try MuseNet</h2>
+<p>We’re excited to see how musicians and non-musicians alike will use MuseNet to create new compositions<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>!</p>
+<p>In <em>simple mode</em> (shown by default), you'll hear random uncurated samples that we've pre-generated. Choose a composer or style, an optional start of a famous piece, and start generating. This lets you explore the variety of musical styles the model can create. In <em>advanced mode</em> you can interact with the model directly. The completions will take longer, but you'll be creating an entirely new piece.</p>
+<div class="full mt-2.5 mb-1.5">
+<div id="demo"></div>
+</div>
+<p><a id="caveats"></a><br>
+Some of MuseNet's limitations include:</p>
+<ul>
+<li>The instruments you ask for are strong suggestions, not requirements. MuseNet generates each note by calculating the probabilities across all possible notes and instruments. The model shifts to make your instrument choices more likely, but there's always a chance it will choose something else.</li>
+<li>MuseNet has a more difficult time with odd pairings of styles and instruments (such as Chopin with bass and drums). Generations will be more natural if you pick instruments closest to the composer or band’s usual style.</li>
+</ul>
+<h2 id="composerandinstrumentationtokens">Composer and instrumentation tokens</h2>
+<p>We created composer and instrumentation tokens to give more control over the kinds of samples MuseNet generates. During training time, these composer and instrumentation tokens were prepended to each sample, so the model would learn to use this information in making note predictions. At generation time, we can then condition the model to create samples in a chosen style by starting with a prompt such as a Rachmaninoff piano start:</p>
+<section>
+<hr class="my-0.5">
+<!-- Rachmaninoff -->
+<iframe class="mb-0" width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/608629944&color=%23ff5500&inverse=false&auto_play=false&show_user=false"></iframe>
+<hr class="my-0.5">
+</section>
+<p>Or prompted with the band Journey, with piano, bass, guitar, and drums:</p>
+<section>
+<hr class="my-0.5">
+<!-- Journey -->
+<iframe class="mb-0" width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/608630013&color=%23ff5500&inverse=false&auto_play=false&show_user=false"></iframe>
+<hr class="my-0.5">
+</section>
+<p>We can visualize the embeddings from MuseNet to gain insight into what the model has learned. Here we use <a href="https://lvdmaaten.github.io/tsne/">t-SNE</a> to create a 2-D map of the cosine similarity of various musical composer and style embeddings.</p>
+<div class="full pt-1 pt-md-1.5 pb-1 pb-lg-2 my-2.5 small-copy scrim bg-cover" style="background-image: url(https://d4mucfpksywv.cloudfront.net/research-covers/musenet/gradient.jpg)">
+<div class="container">
+<div class="color-fg-50 position-absolute" style="width: 40%">
+  Hover over a specific composer or style to see how it relates to&nbsp;others.
+</div>
+</div>
+<div id="composer-embeddings"></div>
+</div>
+<h2 id="longtermstructure">Long-term structure</h2>
+<p>MuseNet uses the recompute and optimized kernels of <a href="https://openai.com/blog/sparse-transformer/">Sparse Transformer</a> to train a 72-layer network with 24 attention heads—with full attention over a context of 4096 tokens. This long context may be one reason why it is able to remember long-term structure in a piece, like in the following sample imitating Chopin:</p>
+<section>
+<hr class="my-0.5">
+<!-- Prompted with 48 tokens of Chopin (returns to initial theme at end) -->
+<iframe class="mb-0" width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/609807969&color=%23ff5500&inverse=false&auto_play=false&show_user=false"></iframe>
+<hr class="my-0.5">
+</section>
+<p>It can also create musical melodic structures, as in this sample imitating Mozart:</p>
+<section>
+<!-- Prompted with first 10 tokens of Mozart K.545 -->
+<hr class="my-0.5">
+<iframe class="mb-0" width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/608629917&color=%23ff5500&inverse=false&auto_play=false&show_user=false"></iframe>
+<hr class="my-0.5">
+</section>
+<p>Music generation is a useful domain for testing the Sparse Transformer as it sits on a middle ground between text and images. It has the fluid token structure of text (in images you can look back N tokens and find the row above, whereas in music there’s not a fixed number for looking back to the previous measure). Yet we can easily hear whether the model is capturing long term structure on the order of hundreds to thousands of tokens. It’s much more obvious if a music model messes up structure by changing the rhythm, in a way that it’s less clear if a text model goes on a brief tangent.</p>
+<h2 id="dataset">Dataset</h2>
+<p>We collected training data for MuseNet from many different sources. <a href="https://www.classicalarchives.com/">ClassicalArchives</a> and <a href="https://bitmidi.com/">BitMidi</a> donated their large collections of MIDI files for this project, and we also found several collections online, including jazz, pop, African, Indian, and Arabic styles. Additionally, we used the <a href="https://arxiv.org/abs/1810.12247">MAESTRO dataset</a>.</p>
+<p>The transformer is trained on sequential data: given a set of notes, we ask it to predict the upcoming note. We experimented with several different ways to encode the MIDI files into tokens suitable for this task. First, a chordwise approach that considered every combination of notes sounding at one time as an individual &quot;chord&quot;, and assigned a token to each chord. Second, we tried condensing the musical patterns by only focusing on the starts of notes, and tried further compressing that using a byte pair encoding scheme.</p>
+<p>We also tried two different methods of marking the passage of time: either tokens that were scaled according to the piece’s tempo (so that the tokens represented a musical beat or fraction of a beat), or tokens that marked absolute time in seconds. We landed on an encoding that combines expressivity with conciseness: combining the pitch, volume, and instrument information into a single token.</p>
+<pre style="white-space: unset" class="language-python"><code class="language-python">bach piano_strings start tempo90 piano:v72:G1 piano:v72:G2 piano:v72:B4 piano:v72:D4 violin:v80:G4 piano:v72:G4 piano:v72:B5 piano:v72:D5 wait:12 piano:v0:B5 wait:5 piano:v72:D5 wait:12 piano:v0:D5 wait:4 piano:v0:G1 piano:v0:G2 piano:v0:B4 piano:v0:D4 violin:v0:G4 piano:v0:G4 wait:1 piano:v72:G5 wait:12 piano:v0:G5 wait:5 piano:v72:D5 wait:12 piano:v0:D5 wait:5 piano:v72:B5 wait:12</code></pre>
+<div class="caption">Sample encoding which combines pitch, volume, and instrument.</div>
+<p>During training, we:</p>
+<ol>
+<li>Transpose the notes by raising and lowering the pitches (later in training, we reduce the amount of transposition so that generations stay within the individual instrument ranges).</li>
+<li>Augment the volumes, turning up or turning down the overall volumes of the various samples.</li>
+<li>Augment timing (when using the absolute time in seconds encoding), effectively slightly slowing or speeding up the pieces.</li>
+<li>Use <a href="https://arxiv.org/abs/1710.09412">mixup</a> on the token embedding space</li>
+</ol>
+<p>We also create an inner critic: the model is asked during training time to predict whether a given sample is truly from the dataset or if it is one of the model's own past generations. This score is used to select samples at generation time.</p>
+<h2 id="embeddings">Embeddings</h2>
+<p>We added several different kinds of embeddings to give the model more structural context. In addition to the standard positional embeddings, we added a learned embedding that tracks the passage of time in a given sample. This way, all of the notes that sound at the same time are given the same timing embedding. We then add an embedding for each note in a chord (this mimics relative attention, since it will be easier for the model to learn that note 4 needs to look back at note 3, or else at note 4 of the previous chord). Finally, we add two structural embeddings which tell the model where a given musical sample is within the larger musical piece. One embedding divides the larger piece into 128 parts, while the second encoding is a countdown from 127 to 0 as the model approaches the (end) token.</p>
+<hr>
+<p>We’re excited to hear what people create! If you create a piece you like, you can upload it to a free service like <a href="https://instaud.io/">Instaudio</a> and then tweet us the link (the MuseNet demo has a tweet button to help with this).</p>
+<p>If you’re interested in learning more about OpenAI’s music work, consider <a href="https://openai.com/jobs/">applying</a> to join our team. Please feel free to <a href="mailto:musenet@openai.com">email us</a> with suggestions for the MuseNet demo. We'd also love to hear from you if you're interested in composing with MuseNet in more depth, or if you have MIDI files you'd like to add to the training set.</p>
+<section class="mt-1.5 mb-1.25" style="overflow: hidden">
+<iframe src="https://player.twitch.tv/?autoplay=false&video=v416276005" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
+</section>
+<div class="caption">MuseNet played an experimental concert on April 25th, 2019, livestreamed on OpenAI’s <a href="https://www.twitch.tv/openai">Twitch channel</a>, in which no human (including us) had heard the pieces before.</div>
+<!-- playlist -->
+<!-- <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/758984046&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe> -->
+<footer class="post-footer js-post-footer">
+<div>
+<hr>
+<div class="row">
+<div class="col">Acknowledgments</div>
+<div class="col">
+<p>Thanks to Rewon Child and Scott Gray for their work on the Sparse Transformer, and Jeff Wu and Alec Radford for their work on GPT-2.</p>
+<p>We also thank the following for feedback on drafts of this post: Greg Brockman, Ilya Sutskever, Durk Kingma, Arvind Neelakantan, Tim Salimans, Rob Laidlow, Judith Finell, Moni Simeonov, Ray Iwazumi, Sam McCandlish, Miles Brundage, Jack Clark, Jonas Schneider, Chris Olah.</p>
+</div>
+</div>
+</div>
+<div>
+<hr>
+<div class="row">
+<div class="col">Editor</div>
+<div class="col">Ashley Pilipiszyn</div>
+</div>
+</div>
+<div>
+<hr>
+<div class="row">
+<div class="col">Design & Development</div>
+<div class="col">Justin Jay Wang, Nicholas Benson, Eric Sigler</div>
+</div>
+</div>
+<div>
+<hr>
+<div class="row">
+<div class="col">Cover Artwork</div>
+<div class="col">Ben Barry</div>
+</div>
+</div>
+<div data-order="-1">
+<hr>
+<div class="row">
+<div class="col">Footnotes</div>
+<div class="col"><hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>If you're interested in other projects for creating AI generated music using transformers, we recommend checking out <a href="https://magenta.tensorflow.org/music-transformer">Magenta's piano generation work</a>. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p class="mb-0.25">For use of outputs created by MuseNet, please cite this blog post as</p>
+<pre class="mt-0 mb-0.25 text-wrap"><code>Payne, Christine. "MuseNet." <i>OpenAI</i>, 25 Apr. 2019, openai.com/blog/musenet</code></pre>
+<p class="disclaimer">Please note: We do not own the music output, but kindly ask that you not charge for it. While unlikely, we make no guarantee that the music is free from external copyright claims.</p>
+ <a href="#fnref2" class="footnote-backref">↩︎</a></li>
+</ol>
+</section>
+<!--kg-card-end: markdown--></div></div></div></footer>
+    </section>
+  </div>
+</section>
+  <footer class="post-footer post-footer--authors container js-post-footer-authors">
+  <div data-order="0">
+    <hr>
+    <div class="row">
+      <div class="col">Authors</div>
+      <div class="col">
+        <span class="post-author"><a class="fade" href="/blog/authors/christine/">Christine Payne</a></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</article>
+  
+
+  </main>
+  <footer>
+  <div class="container mt-2.5 pb-0.5 pb-lg-1">
+    <hr>
+    <nav class="py-0.5 color-fg-50 small-copy">
+      <div class="row">
+
+        <div class="col-12 col-md-10 mb-0.5 col-lg mb-lg-0">
+          <ul class="list-inline">
+            <li class="d-block d-sm-inline mb-0.125 mb-sm-0"><a class="fade d-block d-sm-inline" href="/about/">About</a></li>
+            <li class="d-block d-sm-inline mb-0.125 mb-sm-0"><a class="fade d-block d-sm-inline" href="/progress/">Progress</a></li>
+            <li class="d-block d-sm-inline mb-0.125 mb-sm-0"><a class="fade d-block d-sm-inline" href="/resources/">Resources</a></li>
+            <li class="d-block d-sm-inline mb-0.125 mb-sm-0"><a class="fade d-block d-sm-inline" href="/blog/">Blog</a></li>
+            <li class="d-block d-sm-inline mb-0.125 mb-sm-0"><a class="fade d-block d-sm-inline" href="/charter/">Charter</a></li>
+            <li class="d-block d-sm-inline mb-0.125 mb-sm-0"><a class="fade d-block d-sm-inline" href="/jobs/">Jobs</a></li>
+            <li class="d-block d-sm-inline mb-0.125 mb-sm-0"><a class="fade d-block d-sm-inline" href="/press/">Press</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 mt-n0.2 mt-sm-0 col-sm order-sm-last col-lg-2 order-lg-first">
+          <ul class="list-inline">
+            <li><a class="fade color-fg-40 footer-icon footer-icon--twitter" href="https://twitter.com/openai"><svg id="twitter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 18"><path class="cls-1" d="M7.86,17.93a12.84,12.84,0,0,0,13-12.63V5.11c0-.19,0-.39,0-.58A9.52,9.52,0,0,0,23.15,2.2a9.58,9.58,0,0,1-2.63.71,4.59,4.59,0,0,0,2-2.5,9.25,9.25,0,0,1-2.91,1.1A4.63,4.63,0,0,0,16.29.08a4.55,4.55,0,0,0-4.58,4.5,4.46,4.46,0,0,0,.12,1A13.05,13.05,0,0,1,2.4.91a4.46,4.46,0,0,0,1.42,6,4.52,4.52,0,0,1-2.07-.57v.06a4.53,4.53,0,0,0,3.67,4.42A5,5,0,0,1,4.21,11a4.12,4.12,0,0,1-.86-.09A4.55,4.55,0,0,0,7.62,14,9.34,9.34,0,0,1,.85,15.9a13.17,13.17,0,0,0,7,2"/></svg></a></li>
+            <li><a class="fade color-fg-40 footer-icon footer-icon--facebook" href="https://www.facebook.com/openai.research"><svg id="facebook" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.9,0H1.1A1.1,1.1,0,0,0,0,1.1V18.9A1.1,1.1,0,0,0,1.1,20h9.59V12.27H8.09v-3h2.6V7a3.64,3.64,0,0,1,3.88-4,22.73,22.73,0,0,1,2.33.12v2.7H15.31c-1.25,0-1.5.59-1.5,1.47V9.23h3l-.39,3H13.79V20H18.9A1.1,1.1,0,0,0,20,18.9h0V1.1A1.1,1.1,0,0,0,18.9,0Z"/></svg></a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-sm-auto mt-1/3 mt-sm-n0.2">
+          <label hidden>Sign up for our newsletter</label>
+          <form method="post" action="/subscribe/" id="" class="subscribe-form">
+  <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+  <div class="subscribe-input-wrap d-flex">
+    <input class="subscribe-email" type="email" name="email" placeholder="Sign up for our newsletter" /><button id="" class="subscribe-button btn fade font-large color-fg-50" type="submit"><div class="icon">right</div></button>
+  </div>
+
+  
+<script>
+    (function(g,h,o,s,t){
+        var buster = function(b,m) {
+            h[o]('input.'+b).forEach(function (i) {
+                i.value=i.value || m;
+            });
+        };
+        buster('location', g.location.href);
+        buster('referrer', h.referrer);
+    })(window,document,'querySelectorAll','value');
+</script>
+
+</form>
+
+
+        </div>
+
+      </div>
+    </nav>
+  </div>
+</footer>
+  <script type="text/javascript" src="/assets/scripts/main.js?v=d173e9aa13"></script>
+  
+  <script>
+    !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
+    analytics.load("6gG9RqmGss3RlZ1wdayfXrkImRHAx0hE");
+    analytics.page();
+    }}();
+  </script>
+  
+  
+  <script src="https://d4mucfpksywv.cloudfront.net/musenet/demo/bundle.v3.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://d4mucfpksywv.cloudfront.net/musenet/visualization/composer-embeddings.js"></script>
+<script>
+  var rt = document.body.querySelector('.reading-time');
+  rt.innerHTML += ', 16 minute listen';
+</script>
 </body>
 </html>
-
-<!--
-MkDocs version : 1.0.4
-Build Date UTC : 2019-05-06 16:20:07
--->
