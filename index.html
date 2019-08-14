@@ -1,378 +1,243 @@
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>The MAESTRO Dataset</title>
-  <meta name="description" content="MAESTRO (MIDI and Audio Edited for Synchronous TRacks and Organization) is a dataset composed of over 200 hours of virtuosic piano performances captured with...">
-
-  
-  <!-- OpenGraph data -->
-  <meta property="og:image" content="https://magenta.tensorflow.org/assets/magenta-logo-card.jpg">
-  <meta property="og:title" content="The MAESTRO Dataset">
-  <meta property="og:description" content="MAESTRO (MIDI and Audio Edited for Synchronous TRacks and Organization) is a dataset composed of over 200 hours of virtuosic piano performances captured with...">
-  <meta property="og:url" content="https://magenta.tensorflow.org/datasets/maestro">
-  <meta property="og:site_name" content="Magenta">
-
-  <!-- Twitter Card data -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="The MAESTRO Dataset">
-  <meta name="twitter:description" content="MAESTRO (MIDI and Audio Edited for Synchronous TRacks and Organization) is a dataset composed of over 200 hours of virtuosic piano performances captured with...">
-  <meta name="twitter:image" content="https://magenta.tensorflow.org/assets/magenta-logo-card.jpg">
-
-
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://magenta.tensorflow.org/datasets/maestro">
-  <link rel="alternate" type="application/rss+xml" title="Magenta" href="https://magenta.tensorflow.org/feed.xml">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans:+400,500,700" media="all" rel="stylesheet">
-  <script src="//www.google.com/js/gweb/analytics/autotrack.js"></script>
-  <script>
-  new gweb.analytics.AutoTrack({
-    profile: 'UA-80107903-1'
-  });
-  </script>
-</head>
-
-  <body>
-    <div class="scrim" onclick="document.body.classList.toggle('drawer-opened', false)"></div>
-<header>
-  <div class="top-bar background">
-    <div class="top-bar-content">
-      <div class="logo">
-        <a href="/"><img src="/assets/magenta-logo.png" height="70" alt="magenta logo"></a>
-      </div>
-      <nav>
-        <button class="menu-button" onclick="document.body.classList.toggle('drawer-opened', true)" aria-label="open nav menu">
-          <svg viewBox="0 0 18 15">
-            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
-            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
-            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
-          </svg>
-        </button>
-        <div class="links">
-          <a href="/get-started">Get Started</a>
-<a href="/studio">Studio</a>
-<a href="/demos">Demos</a>
-<a href="/blog">Blog</a>
-<a href="/research">Research</a>
-<a href="/talks">Talks</a>
-<a href="/community">Community</a>
-
-        </div>
-      </nav>
-    </div>
-  </div>
-</header>
-<div class="drawer">
-  <div class="drawer-content">
-    <a href="/get-started">Get Started</a>
-<a href="/studio">Studio</a>
-<a href="/demos">Demos</a>
-<a href="/blog">Blog</a>
-<a href="/research">Research</a>
-<a href="/talks">Talks</a>
-<a href="/community">Community</a>
-
-  </div>
-</div>
-
-
-    <div class="main">
-      <section class="white">
-  <article class="content single" itemscope itemtype="http://schema.org/BlogPosting">
-    <h1 class="post-title" itemprop="name headline">The MAESTRO Dataset</h1>
-    <p class="post-meta">
-      <time datetime="2018-10-29T11:00:00-07:00" itemprop="datePublished">Oct 29, 2018</time>
-      <br>
-      
-      
-    </p>
-
-    <div class="article-body" itemprop="articleBody">
-      <p><strong>MAESTRO</strong> (MIDI and Audio Edited for Synchronous TRacks and Organization) is a dataset composed of over 200 hours of virtuosic piano performances captured with fine alignment (~3 ms) between note labels and audio waveforms.</p>
-
-<!--more-->
-
-<h1 class="no_toc" id="contents">Contents</h1>
-
-<ul id="markdown-toc">
-  <li><a href="#dataset" id="markdown-toc-dataset">Dataset</a></li>
-  <li><a href="#download" id="markdown-toc-download">Download</a>    <ul>
-      <li><a href="#v200" id="markdown-toc-v200">V2.0.0</a></li>
-      <li><a href="#v100" id="markdown-toc-v100">V1.0.0</a></li>
-    </ul>
-  </li>
-  <li><a href="#license" id="markdown-toc-license">License</a></li>
-  <li><a href="#how-to-cite" id="markdown-toc-how-to-cite">How to Cite</a></li>
-</ul>
-
-<h1 id="dataset">Dataset</h1>
-
-<p>We partnered with organizers of the <a href="http://piano-e-competition.com/">International Piano-e-Competition</a> for the raw data used in this dataset. During each installment of the competition virtuoso pianists perform on Yamaha Disklaviers which, in addition to being concert-quality acoustic grand pianos, utilize an integrated high-precision MIDI capture and playback system. Recorded MIDI data is of sufficient fidelity to allow the audition stage of the competition to be judged remotely by listening to contestant performances reproduced over the wire on another Disklavier instrument.</p>
-
-<p>The dataset contains over 200 hours of paired audio and MIDI recordings from ten years of International Piano-e-Competition. The MIDI data includes key strike velocities and sustain/sostenuto/una corda pedal positions. Audio and MIDI files are aligned with ∼3 ms accuracy and sliced to individual musical pieces, which are annotated with composer, title, and year of performance. Uncompressed audio is of CD quality or higher (44.1–48 kHz 16-bit PCM stereo).</p>
-
-<p>A train/validation/test split configuration is also proposed, so that the same composition, even if performed by multiple contestants, does not appear in multiple subsets. Repertoire is mostly classical, including composers from the 17th to early 20th century.</p>
-
-<p>For more information about how the dataset was created and several applications of it, please see the paper where it was introduced: <a href="https://goo.gl/magenta/maestro-paper">Enabling Factorized Piano Music Modeling and Generation with the MAESTRO Dataset</a>.</p>
-
-<p>For an example application of the dataset, see our blog post on <a href="https://g.co/magenta/wave2midi2wave">Wave2Midi2Wave</a>.</p>
-
-<h1 id="download">Download</h1>
-
-<p>MAESTRO is provided as a zip file containing the MIDI and WAV files as well as metadata in CSV and JSON formats. A MIDI-only archive of the dataset is also available.</p>
-
-<p>The metadata files have the following fields for every MIDI/WAV pair:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Field</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>canonical_composer</td>
-      <td>Composer of the piece. We have attempted to standardize on a single spelling for a given name.</td>
-    </tr>
-    <tr>
-      <td>canonical_title</td>
-      <td>Title of the piece. Not guaranteed to be standardized to a single representation.</td>
-    </tr>
-    <tr>
-      <td>split</td>
-      <td>Suggested train/validation/test split.</td>
-    </tr>
-    <tr>
-      <td>year</td>
-      <td>Year of performance.</td>
-    </tr>
-    <tr>
-      <td>midi_filename</td>
-      <td>MIDI filename.</td>
-    </tr>
-    <tr>
-      <td>audio_filename</td>
-      <td>WAV filename.</td>
-    </tr>
-    <tr>
-      <td>duration</td>
-      <td>Duration in seconds, based on the MIDI file.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="v200">V2.0.0</h2>
-
-<p>In this update we added another year of competition performances and preserved sostenuto (CC 66) and una corda (CC 67) messages in MIDI files, in addition to sustain pedal (CC 64) present since V1.0.0.</p>
-
-<p>Crucially, this version has a new train/validation/test split, which is <strong>not compatible with V1.0.0</strong>.</p>
-
-<h3 class="no_toc" id="maestro-v200zip"><a href="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.zip">maestro-v2.0.0.zip</a></h3>
-<p>Size: 103GB (122GB uncompressed)<br />
-SHA256: <code>572c6054e8d2c7219aa4df9a29357da0f9789524c11fa38cef7d4bd8542c93f0</code></p>
-
-<h3 class="no_toc" id="maestro-v200-midizip"><a href="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0-midi.zip">maestro-v2.0.0-midi.zip</a></h3>
-<p>Size: 57MB (85MB uncompressed)<br />
-SHA256: <code>ec2cc9d94886c6b376db1eaa2b8ad1ce62ff9f0a28b3744782b13163295dadf3</code></p>
-
-<p>Metadata files as separate downloads:</p>
-
-<ul>
-  <li><a href="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.csv">maestro-v2.0.0.csv</a></li>
-  <li><a href="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.json">maestro-v2.0.0.json</a></li>
-</ul>
-
-<p>Certain statistics of the dataset:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Split</th>
-      <th style="text-align: right">Performances</th>
-      <th style="text-align: right">Duration (hours)</th>
-      <th style="text-align: right">Size (GB)</th>
-      <th style="text-align: right">Notes (millions)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Train</td>
-      <td style="text-align: right">967</td>
-      <td style="text-align: right">161.3</td>
-      <td style="text-align: right">97.7</td>
-      <td style="text-align: right">5.73</td>
-    </tr>
-    <tr>
-      <td>Validation</td>
-      <td style="text-align: right">137</td>
-      <td style="text-align: right">19.4</td>
-      <td style="text-align: right">11.8</td>
-      <td style="text-align: right">0.64</td>
-    </tr>
-    <tr>
-      <td>Test</td>
-      <td style="text-align: right">178</td>
-      <td style="text-align: right">20.5</td>
-      <td style="text-align: right">12.4</td>
-      <td style="text-align: right">0.76</td>
-    </tr>
-    <tr>
-      <td><strong>Total</strong></td>
-      <td style="text-align: right"><strong>1282</strong></td>
-      <td style="text-align: right"><strong>201.2</strong></td>
-      <td style="text-align: right"><strong>121.8</strong></td>
-      <td style="text-align: right"><strong>7.13</strong></td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="v100">V1.0.0</h2>
-
-<p>This is the original release of the dataset, which was used to produce all results in the <a href="https://goo.gl/magenta/maestro-paper">MAESTRO paper</a>.</p>
-
-<h3 class="no_toc" id="maestro-v100zip"><a href="https://storage.googleapis.com/magentadata/datasets/maestro/v1.0.0/maestro-v1.0.0.zip">maestro-v1.0.0.zip</a></h3>
-<p>Size: 87GB (103GB uncompressed)<br />
-SHA256: <code>97471232457147d5bffa72db8c4897166ba52afd4a64197004b806c2ec85ad27</code></p>
-
-<h3 class="no_toc" id="maestro-v100-midizip"><a href="https://storage.googleapis.com/magentadata/datasets/maestro/v1.0.0/maestro-v1.0.0-midi.zip">maestro-v1.0.0-midi.zip</a></h3>
-<p>Size: 45MB (67MB uncompressed)<br />
-SHA256: <code>f620f9e1eceaab8beea10617599add2e9c83234199b550382a2f603098ae7135</code></p>
-
-<p>Metadata files:</p>
-
-<ul>
-  <li><a href="https://storage.googleapis.com/magentadata/datasets/maestro/v1.0.0/maestro-v1.0.0.csv">maestro-v1.0.0.csv</a></li>
-  <li><a href="https://storage.googleapis.com/magentadata/datasets/maestro/v1.0.0/maestro-v1.0.0.json">maestro-v1.0.0.json</a></li>
-</ul>
-
-<p>Statistics:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Split</th>
-      <th>Performances</th>
-      <th>Compositions (approx.)</th>
-      <th>Duration (hours)</th>
-      <th>Size (GB)</th>
-      <th>Notes (millions)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Train</td>
-      <td>954</td>
-      <td>295</td>
-      <td>140.1</td>
-      <td>83.6</td>
-      <td>5.06</td>
-    </tr>
-    <tr>
-      <td>Validation</td>
-      <td>105</td>
-      <td>60</td>
-      <td>15.3</td>
-      <td>9.1</td>
-      <td>0.54</td>
-    </tr>
-    <tr>
-      <td>Test</td>
-      <td>125</td>
-      <td>75</td>
-      <td>16.9</td>
-      <td>10.1</td>
-      <td>0.57</td>
-    </tr>
-    <tr>
-      <td><strong>Total</strong></td>
-      <td><strong>1184</strong></td>
-      <td><strong>430</strong></td>
-      <td><strong>172.3</strong></td>
-      <td><strong>102.8</strong></td>
-      <td><strong>6.18</strong></td>
-    </tr>
-  </tbody>
-</table>
-
-<h1 id="license">License</h1>
-<p>The dataset is made available by Google LLC under a
-<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution Non-Commercial Share-Alike 4.0 (CC BY-NC-SA 4.0) license</a>.</p>
-
-<h1 id="how-to-cite">How to Cite</h1>
-<p>If you use the MAESTRO dataset in your work, please cite the
-<a href="https://goo.gl/magenta/maestro-paper">paper</a> where it was introduced:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Curtis Hawthorne, Andriy Stasyuk, Adam Roberts, Ian Simon, Cheng-Zhi Anna Huang,
-  Sander Dieleman, Erich Elsen, Jesse Engel, and Douglas Eck. "Enabling
-  Factorized Piano Music Modeling and Generation with the MAESTRO Dataset."
-  In International Conference on Learning Representations, 2019.
-</code></pre></div></div>
-
-<p>You can also use the following BibTeX entry:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@inproceedings{
-  hawthorne2018enabling,
-  title={Enabling Factorized Piano Music Modeling and Generation with the {MAESTRO} Dataset},
-  author={Curtis Hawthorne and Andriy Stasyuk and Adam Roberts and Ian Simon and Cheng-Zhi Anna Huang and Sander Dieleman and Erich Elsen and Jesse Engel and Douglas Eck},
-  booktitle={International Conference on Learning Representations},
-  year={2019},
-  url={https://openreview.net/forum?id=r1lYRjC9F7},
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title></title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
 }
-</code></pre></div></div>
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
 
-<p>Please also make sure to specify which version of the dataset you are using.</p>
 
-<!-- Links -->
+:root { --side-bar-bg-color: #fff; --control-text-color: #777; }
+html { font-size: 14px; }
+body { color: rgb(52, 73, 94); -webkit-font-smoothing: antialiased; line-height: 1.6rem; letter-spacing: 0px; margin: 0px; overflow-x: hidden; font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif !important; }
+#write { max-width: 860px; margin: 0px auto; padding: 20px 30px 100px; }
+#write p { line-height: 1.6rem; word-spacing: 0.05rem; }
+#write ol li { text-indent: 0.5rem; }
+#write > ul:first-child, #write > ol:first-child { margin-top: 30px; }
+body > :first-child { margin-top: 0px !important; }
+body > :last-child { margin-bottom: 0px !important; }
+a { color: rgb(66, 185, 131); font-weight: 600; padding: 0px 2px; text-decoration: none; }
+h1, h2, h3, h4, h5, h6 { position: relative; margin-top: 1rem; margin-bottom: 1rem; font-weight: bold; line-height: 1.4; cursor: text; }
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor { text-decoration: none; }
+h1 tt, h1 code { font-size: inherit !important; }
+h2 tt, h2 code { font-size: inherit !important; }
+h3 tt, h3 code { font-size: inherit !important; }
+h4 tt, h4 code { font-size: inherit !important; }
+h5 tt, h5 code { font-size: inherit !important; }
+h6 tt, h6 code { font-size: inherit !important; }
+h2 a, h3 a { color: rgb(52, 73, 94); }
+h1 { padding-bottom: 0.4rem; font-size: 2.2rem; line-height: 1.3; }
+h2 { font-size: 1.75rem; line-height: 1.225; margin: 35px 0px 15px; padding-bottom: 0.5em; border-bottom: 1px solid rgb(221, 221, 221); }
+h3 { font-size: 1.4rem; line-height: 1.43; margin: 20px 0px 7px; }
+h4 { font-size: 1.2rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 1rem; color: rgb(119, 119, 119); }
+p, blockquote, ul, ol, dl, table { margin: 0.8em 0px; }
+li > ol, li > ul { margin: 0px; }
+hr { height: 2px; padding: 0px; margin: 16px 0px; background-color: rgb(231, 231, 231); border: 0px none; overflow: hidden; box-sizing: content-box; }
+body > h2:first-child { margin-top: 0px; padding-top: 0px; }
+body > h1:first-child { margin-top: 0px; padding-top: 0px; }
+body > h1:first-child + h2 { margin-top: 0px; padding-top: 0px; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child { margin-top: 0px; padding-top: 0px; }
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 { margin-top: 0px; padding-top: 0px; }
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p { margin-top: 0px; }
+li p.first { display: inline-block; }
+ul, ol { padding-left: 30px; }
+ul:first-child, ol:first-child { margin-top: 0px; }
+ul:last-child, ol:last-child { margin-bottom: 0px; }
+blockquote { border-left: 4px solid rgb(66, 185, 131); padding: 10px 15px; color: rgb(119, 119, 119); background-color: rgba(66, 185, 131, 0.1); }
+table { padding: 0px; word-break: initial; }
+table tr { border-top: 1px solid rgb(223, 226, 229); margin: 0px; padding: 0px; }
+table tr:nth-child(2n), thead { background-color: rgb(250, 250, 250); }
+table tr th { font-weight: bold; border-width: 1px 1px 0px; border-top-style: solid; border-right-style: solid; border-left-style: solid; border-top-color: rgb(223, 226, 229); border-right-color: rgb(223, 226, 229); border-left-color: rgb(223, 226, 229); border-image: initial; border-bottom-style: initial; border-bottom-color: initial; text-align: left; margin: 0px; padding: 6px 13px; }
+table tr td { border: 1px solid rgb(223, 226, 229); text-align: left; margin: 0px; padding: 6px 13px; }
+table tr th:first-child, table tr td:first-child { margin-top: 0px; }
+table tr th:last-child, table tr td:last-child { margin-bottom: 0px; }
+#write strong { padding: 0px 1px; }
+#write em { padding: 0px 5px 0px 2px; }
+#write table thead th { background-color: rgb(242, 242, 242); }
+#write .CodeMirror-gutters { border-right: none; }
+#write .md-fences { border: 1px solid rgb(244, 244, 244); -webkit-font-smoothing: initial; line-height: 1.43rem; border-radius: 2px; font-size: 0.85rem; overflow-wrap: normal; margin: 0.8rem 0px !important; padding: 0.3rem 0px !important; background-color: rgb(248, 248, 248) !important; font-family: "Roboto Mono", "Source Sans Pro", Monaco, courier, monospace !important; }
+#write .CodeMirror-wrap .CodeMirror-code pre { padding-left: 12px; }
+#write code, tt { margin: 0px 2px; padding: 2px 4px; border-radius: 2px; font-size: 0.92rem; color: rgb(233, 105, 0); background-color: rgb(248, 248, 248); font-family: "Roboto Mono", "Source Sans Pro", Monaco, courier, monospace !important; }
+#write .md-footnote { background-color: rgb(248, 248, 248); color: rgb(233, 105, 0); }
+#write mark { background-color: rgb(235, 255, 235); border-radius: 2px; padding: 2px 4px; margin: 0px 2px; color: rgb(34, 34, 34); font-weight: 500; }
+#write del { padding: 1px 2px; }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(34, 162, 201); }
+.cm-s-inner .cm-string { color: rgb(34, 162, 201); }
+.md-task-list-item > input { margin-left: -1.3em; }
+@media print {
+  html { font-size: 13px; }
+  table, pre { break-inside: avoid; }
+  pre { overflow-wrap: break-word; }
+}
+.md-fences { background-color: rgb(248, 248, 248); }
+#write pre.md-meta-block { padding: 1rem; font-size: 85%; line-height: 1.45; background-color: rgb(247, 247, 247); border: 0px; border-radius: 3px; color: rgb(119, 119, 119); margin-top: 0px !important; }
+.mathjax-block > .code-tooltip { bottom: 0.375rem; }
+#write > h3.md-focus::before { left: -1.5625rem; top: 0.375rem; }
+#write > h4.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+#write > h5.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+#write > h6.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
+.md-image > .md-meta { border-radius: 3px; font-family: Consolas, "Liberation Mono", Courier, monospace; padding: 2px 0px 0px 4px; font-size: 0.9em; color: inherit; }
+.md-tag { color: inherit; }
+.md-toc { margin-top: 20px; padding-bottom: 20px; }
+.sidebar-tabs { border-bottom: none; }
+#typora-quick-open { border: 1px solid rgb(221, 221, 221); background-color: rgb(248, 248, 248); }
+#typora-quick-open-item { background-color: rgb(250, 250, 250); border-color: rgb(254, 254, 254) rgb(229, 229, 229) rgb(229, 229, 229) rgb(238, 238, 238); border-style: solid; border-width: 1px; }
+#md-notification::before { top: 10px; }
+.on-focus-mode blockquote { border-left-color: rgba(85, 85, 85, 0.12); }
+header, .context-menu, .megamenu-content, footer { font-family: "Segoe UI", Arial, sans-serif; }
+.file-node-content:hover .file-node-icon, .file-node-content:hover .file-node-open-state { visibility: visible; }
+.mac-seamless-mode #typora-sidebar { background-color: var(--side-bar-bg-color); }
+.md-lang { color: rgb(180, 101, 77); }
+.html-for-mac .context-menu { --item-hover-bg-color: #E6F0FE; }
 
-    </div>
-  </article>
-</section>
 
-    </div>
-
-    <footer>
-  <div class="footer-content">
-    <div class="logo">
-      <a href="https://ai.google/" target="_blank" rel="noopener" title="Google AI">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 157.2 40.88"><defs><style>.cls-1{fill:none;}.cls-2{fill:#80868b;}.cls-3{fill:#80868b;}.cls-4{fill:#80868b;}.cls-5{fill:#80868b;}.cls-6{fill:#80868b;}</style></defs><g id="Running_copy" data-name="Running copy"><path class="cls-1" d="M82.91,16.35A4.8,4.8,0,0,0,79.29,18a5.66,5.66,0,0,0-1.49,4,5.53,5.53,0,0,0,1.49,3.94,4.78,4.78,0,0,0,3.62,1.58,4.47,4.47,0,0,0,3.49-1.58A5.7,5.7,0,0,0,87.81,22a5.84,5.84,0,0,0-1.41-4A4.48,4.48,0,0,0,82.91,16.35Z"></path><path class="cls-1" d="M42.8,16.35a4.92,4.92,0,0,0-3.66,1.57,5.49,5.49,0,0,0-1.51,4,5.52,5.52,0,0,0,1.52,4,5,5,0,0,0,7.3,0,5.48,5.48,0,0,0,1.53-4,5.49,5.49,0,0,0-1.51-4A4.93,4.93,0,0,0,42.8,16.35Z"></path><path class="cls-1" d="M62.89,16.35a4.93,4.93,0,0,0-3.67,1.57,5.53,5.53,0,0,0-1.51,4,5.48,5.48,0,0,0,1.53,4,5,5,0,0,0,7.3,0,5.48,5.48,0,0,0,1.53-4,5.49,5.49,0,0,0-1.51-4A4.93,4.93,0,0,0,62.89,16.35Z"></path><path class="cls-1" d="M111,16.82a4.15,4.15,0,0,0-2.12-.54,4.79,4.79,0,0,0-3.32,1.46,4.9,4.9,0,0,0-1.47,3.9l8.2-3.41A2.82,2.82,0,0,0,111,16.82Z"></path><rect class="cls-2" x="94.13" y="3.56" width="4.03" height="26.97"></rect><path class="cls-3" d="M42.8,12.74a9,9,0,0,0-6.53,2.62,8.83,8.83,0,0,0-2.68,6.55,8.84,8.84,0,0,0,2.68,6.56,9.46,9.46,0,0,0,13.07,0A8.83,8.83,0,0,0,52,21.91a8.82,8.82,0,0,0-2.67-6.55A9,9,0,0,0,42.8,12.74Zm3.65,13.15a5,5,0,0,1-7.3,0,5.52,5.52,0,0,1-1.52-4,5.49,5.49,0,0,1,1.51-4,5.06,5.06,0,0,1,7.33,0,5.49,5.49,0,0,1,1.51,4A5.48,5.48,0,0,1,46.45,25.89Z"></path><path class="cls-4" d="M18.89,15.55v3.9h9.32a8.27,8.27,0,0,1-2.12,4.9,9.76,9.76,0,0,1-7.2,2.85,9.75,9.75,0,0,1-7.24-3,10.07,10.07,0,0,1-3-7.33,10.07,10.07,0,0,1,3-7.33,9.75,9.75,0,0,1,7.24-3,9.89,9.89,0,0,1,7,2.78l2.75-2.74a13.63,13.63,0,0,0-9.77-3.93A14.07,14.07,0,0,0,8.71,6.78,13.58,13.58,0,0,0,4.44,16.84,13.56,13.56,0,0,0,8.71,26.9a14.07,14.07,0,0,0,10.18,4.19,13.12,13.12,0,0,0,9.94-4q3.38-3.36,3.37-9.1a12.59,12.59,0,0,0-.2-2.44Z"></path><path class="cls-4" d="M87.53,14.79h-.14a5.64,5.64,0,0,0-2-1.46,6.66,6.66,0,0,0-2.83-.59,8.37,8.37,0,0,0-6.15,2.69A9,9,0,0,0,73.77,22a8.86,8.86,0,0,0,2.64,6.46,8.36,8.36,0,0,0,6.15,2.68A5.87,5.87,0,0,0,87.39,29h.14v1.32a5.63,5.63,0,0,1-1.3,4,4.69,4.69,0,0,1-3.6,1.39,4.34,4.34,0,0,1-2.88-1A5.94,5.94,0,0,1,78,32.44L74.5,33.9a9.43,9.43,0,0,0,3,3.79,8.07,8.07,0,0,0,5.14,1.64,8.61,8.61,0,0,0,6.27-2.39c1.64-1.58,2.45-4,2.45-7.17V13.3H87.53ZM86.4,25.89a4.47,4.47,0,0,1-3.49,1.58,4.78,4.78,0,0,1-3.62-1.58A5.53,5.53,0,0,1,77.8,22a5.66,5.66,0,0,1,1.49-4,4.8,4.8,0,0,1,3.62-1.6A4.48,4.48,0,0,1,86.4,18a5.84,5.84,0,0,1,1.41,4A5.7,5.7,0,0,1,86.4,25.89Z"></path><path class="cls-5" d="M62.89,12.74a9,9,0,0,0-6.53,2.62,8.79,8.79,0,0,0-2.68,6.55,8.8,8.8,0,0,0,2.68,6.56,9.45,9.45,0,0,0,13.06,0,8.8,8.8,0,0,0,2.68-6.56,8.79,8.79,0,0,0-2.68-6.55A9,9,0,0,0,62.89,12.74Zm3.65,13.15a5,5,0,0,1-7.3,0,5.48,5.48,0,0,1-1.53-4,5.53,5.53,0,0,1,1.51-4,5.07,5.07,0,0,1,7.34,0,5.49,5.49,0,0,1,1.51,4A5.48,5.48,0,0,1,66.54,25.89Z"></path><path class="cls-3" d="M109.22,27.47a4.68,4.68,0,0,1-4.45-2.78L117,19.62l-.42-1a11,11,0,0,0-.91-1.81,10.64,10.64,0,0,0-1.49-1.86,7.14,7.14,0,0,0-2.36-1.56,7.73,7.73,0,0,0-3.1-.61,8.27,8.27,0,0,0-6.13,2.57,9.05,9.05,0,0,0-2.52,6.6,8.93,8.93,0,0,0,2.61,6.54,8.74,8.74,0,0,0,6.5,2.64,8.43,8.43,0,0,0,4.69-1.25,10.13,10.13,0,0,0,3-2.82l-3.13-2.08A5.26,5.26,0,0,1,109.22,27.47Zm-3.64-9.73a4.79,4.79,0,0,1,3.32-1.46,4.15,4.15,0,0,1,2.12.54,2.82,2.82,0,0,1,1.29,1.41l-8.2,3.41A4.9,4.9,0,0,1,105.58,17.74Z"></path><path class="cls-6" d="M127.47,30.54h-3.55l9.39-24.9h3.62l9.39,24.9h-3.55l-2.4-6.75H129.9Zm7.58-21L131,20.8h8.28L135.19,9.57Z"></path><path class="cls-6" d="M152.44,30.54h-3.2V5.64h3.2Z"></path></g></svg>
-      </a>
-    </div>
-
-    <ul>
-      <li>
-        <a href="https://twitter.com/search?q=%23madewithmagenta" target="_blank" rel="noopener">
-          Twitter
-        </a>
-      </li>
-      <li>
-        <a href="/blog" target="_blank" rel="noopener">
-          Blog
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/tensorflow/magenta" target="_blank" rel="noopener">
-          GitHub
-        </a>
-      </li>
-      <li>
-        <a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener">
-          Privacy
-        </a>
-      </li>
-      <li>
-        <a href="https://www.google.com/policies/terms/" target="_blank" rel="noopener">
-          Terms
-        </a>
-      </li>
-    </ul>
-  </div>
-</footer>
-
-  </body>
-  <script src="/js/main.js"></script>
+</style>
+</head>
+<body class='typora-export os-windows' >
+<div  id='write'  class = 'is-node'><h1><a name="durian-demo" class="md-header-anchor"></a><span>DurIAN Demo</span></h1><p>&nbsp;</p><p><span> </span><a href='C:\Users\bearl\Downloads\ssx_00000070-vcto-lpl.wav'><span>ssx_00000070-vcto-lpl.wav</span></a><span> </span></p><video src="C:\Users\bearl\Downloads\test06_ppp_zc.mp4" onerror="this.style.display = 'none';"></video><p>&nbsp;</p></div>
+</body>
 </html>
