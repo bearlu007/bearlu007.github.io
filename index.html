@@ -149,179 +149,94 @@ iframe { max-width: 100%; width: 100%; border: none; }
 .highlight td, .highlight tr { border: 0px; }
 
 
-.CodeMirror { height: auto; }
-.CodeMirror.cm-s-inner { background: inherit; }
-.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
-.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
-.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
-.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
-.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
-.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
-.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
-.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
-.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
-.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
-.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
-.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
-.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
-.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
-.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
-.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
-.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
-.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
-.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
-.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
-.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
-.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
-.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
-.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
-.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
-.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
-.cm-negative { color: rgb(221, 68, 68); }
-.cm-positive { color: rgb(34, 153, 34); }
-.cm-header, .cm-strong { font-weight: 700; }
-.cm-del { text-decoration: line-through; }
-.cm-em { font-style: italic; }
-.cm-link { text-decoration: underline; }
-.cm-error { color: red; }
-.cm-invalidchar { color: red; }
-.cm-constant { color: rgb(38, 139, 210); }
-.cm-defined { color: rgb(181, 137, 0); }
-div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
-div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
-.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
-.CodeMirror { position: relative; overflow: hidden; }
-.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
-.CodeMirror-sizer { position: relative; }
-.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
-.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
-.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
-.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
-.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
-.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
-.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
-.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
-.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
-.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
-.CodeMirror-lines { cursor: text; }
-.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
-.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
-.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
-.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
-.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
-.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
-.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
-.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
-.CodeMirror-measure pre { position: static; }
-.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
-.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
-.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
-.cm-searching { background: rgba(255, 255, 0, 0.4); }
-@media print {
-  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+:root { --control-text-color: #777; }
+h1, .h1, .f1 { font-size: 2rem; line-height: 2.5rem; }
+h2, .h2, .f2 { font-size: 1.5rem; line-height: 2rem; }
+h3, .h3, .f3 { font-size: 1.25rem; line-height: 1.5rem; }
+p, .p, .f4, h4, h5, h6, dl, ol, ul, pre[cid], div[cid], #typora-source { font-size: 1.125rem; line-height: 1.5rem; }
+h4 { font-size: 1.13rem; }
+body { font-family: Merriweather, "PT Serif", Georgia, "Times New Roman", STSong, serif; line-height: 1.5rem; font-weight: 400; }
+#write { max-width: 914px; color: rgb(51, 51, 51); }
+img { width: auto; max-width: 100%; }
+body { font-size: 1.5rem; box-sizing: border-box; }
+.ty-table-edit { background: rgb(237, 237, 237); }
+table { width: 100%; font-size: 1.125rem; }
+table > thead > tr > th, table > thead > tr > td, table > tbody > tr > th, table > tbody > tr > td, table > tfoot > tr > th, table > tfoot > tr > td { padding: 12px; line-height: 1.2; vertical-align: top; border-top: 1px solid rgb(51, 51, 51); }
+table > thead > tr > th { vertical-align: bottom; border-bottom: 2px solid rgb(51, 51, 51); }
+table > caption + thead > tr:first-child > th, table > caption + thead > tr:first-child > td, table > colgroup + thead > tr:first-child > th, table > colgroup + thead > tr:first-child > td, table > thead:first-child > tr:first-child > th, table > thead:first-child > tr:first-child > td { border-top: 0px; }
+table > tbody + tbody { border-top: 2px solid rgb(51, 51, 51); }
+p { font-weight: 300; line-height: 1.5; }
+abbr { border-bottom: 1px dotted black; cursor: help; }
+pre, code { font-family: Menlo, Monaco, "Courier New", monospace; }
+code, .md-fences { color: rgb(122, 122, 122); }
+.md-fences { padding: 0.5rem 1.125em; margin-bottom: 0.88em; font-size: 1rem; border: 1px solid rgb(122, 122, 122); }
+blockquote { padding: 1.33em; font-style: italic; border-left: 5px solid rgb(122, 122, 122); color: rgb(85, 85, 85); }
+blockquote em { color: rgb(0, 0, 0); }
+blockquote footer { font-size: 0.85rem; font-style: normal; background-color: rgb(255, 255, 255); color: rgb(122, 122, 122); border-color: transparent; }
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 { font-family: Lato, "Helvetica Neue", Helvetica, sans-serif; font-weight: bold; line-height: 1.2; margin: 1em 0px 0.5em; }
+@media screen and (min-width: 48em) {
+  .h1, h1 { font-size: 3.25rem; }
+  .h2, h2 { font-size: 2.298rem; }
+  .h3, h3 { font-size: 1.625rem; }
+  .h4, h4 { font-size: 1.3rem; }
+  #write > h4.md-focus::before, #write > h5.md-focus::before, #write > h6.md-focus::before { top: 1px; }
+  .p, p, li { font-size: 1.25rem; line-height: 1.8; }
+  table { font-size: 1.25rem; }
 }
-
-
-:root { --side-bar-bg-color: #fff; --control-text-color: #777; }
-html { font-size: 14px; }
-body { color: rgb(52, 73, 94); -webkit-font-smoothing: antialiased; line-height: 1.6rem; letter-spacing: 0px; margin: 0px; overflow-x: hidden; font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif !important; }
-#write { max-width: 860px; margin: 0px auto; padding: 20px 30px 100px; }
-#write p { line-height: 1.6rem; word-spacing: 0.05rem; }
-#write ol li { text-indent: 0.5rem; }
-#write > ul:first-child, #write > ol:first-child { margin-top: 30px; }
-body > :first-child { margin-top: 0px !important; }
-body > :last-child { margin-bottom: 0px !important; }
-a { color: rgb(66, 185, 131); font-weight: 600; padding: 0px 2px; text-decoration: none; }
-h1, h2, h3, h4, h5, h6 { position: relative; margin-top: 1rem; margin-bottom: 1rem; font-weight: bold; line-height: 1.4; cursor: text; }
-h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor { text-decoration: none; }
-h1 tt, h1 code { font-size: inherit !important; }
-h2 tt, h2 code { font-size: inherit !important; }
-h3 tt, h3 code { font-size: inherit !important; }
-h4 tt, h4 code { font-size: inherit !important; }
-h5 tt, h5 code { font-size: inherit !important; }
-h6 tt, h6 code { font-size: inherit !important; }
-h2 a, h3 a { color: rgb(52, 73, 94); }
-h1 { padding-bottom: 0.4rem; font-size: 2.2rem; line-height: 1.3; }
-h2 { font-size: 1.75rem; line-height: 1.225; margin: 35px 0px 15px; padding-bottom: 0.5em; border-bottom: 1px solid rgb(221, 221, 221); }
-h3 { font-size: 1.4rem; line-height: 1.43; margin: 20px 0px 7px; }
-h4 { font-size: 1.2rem; }
-h5 { font-size: 1rem; }
-h6 { font-size: 1rem; color: rgb(119, 119, 119); }
-p, blockquote, ul, ol, dl, table { margin: 0.8em 0px; }
-li > ol, li > ul { margin: 0px; }
-hr { height: 2px; padding: 0px; margin: 16px 0px; background-color: rgb(231, 231, 231); border: 0px none; overflow: hidden; box-sizing: content-box; }
-body > h2:first-child { margin-top: 0px; padding-top: 0px; }
-body > h1:first-child { margin-top: 0px; padding-top: 0px; }
-body > h1:first-child + h2 { margin-top: 0px; padding-top: 0px; }
-body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child { margin-top: 0px; padding-top: 0px; }
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 { margin-top: 0px; padding-top: 0px; }
-h1 p, h2 p, h3 p, h4 p, h5 p, h6 p { margin-top: 0px; }
-li p.first { display: inline-block; }
-ul, ol { padding-left: 30px; }
-ul:first-child, ol:first-child { margin-top: 0px; }
-ul:last-child, ol:last-child { margin-bottom: 0px; }
-blockquote { border-left: 4px solid rgb(66, 185, 131); padding: 10px 15px; color: rgb(119, 119, 119); background-color: rgba(66, 185, 131, 0.1); }
-table { padding: 0px; word-break: initial; }
-table tr { border-top: 1px solid rgb(223, 226, 229); margin: 0px; padding: 0px; }
-table tr:nth-child(2n), thead { background-color: rgb(250, 250, 250); }
-table tr th { font-weight: bold; border-width: 1px 1px 0px; border-top-style: solid; border-right-style: solid; border-left-style: solid; border-top-color: rgb(223, 226, 229); border-right-color: rgb(223, 226, 229); border-left-color: rgb(223, 226, 229); border-image: initial; border-bottom-style: initial; border-bottom-color: initial; text-align: left; margin: 0px; padding: 6px 13px; }
-table tr td { border: 1px solid rgb(223, 226, 229); text-align: left; margin: 0px; padding: 6px 13px; }
-table tr th:first-child, table tr td:first-child { margin-top: 0px; }
-table tr th:last-child, table tr td:last-child { margin-bottom: 0px; }
-#write strong { padding: 0px 1px; }
-#write em { padding: 0px 5px 0px 2px; }
-#write table thead th { background-color: rgb(242, 242, 242); }
-#write .CodeMirror-gutters { border-right: none; }
-#write .md-fences { border: 1px solid rgb(244, 244, 244); -webkit-font-smoothing: initial; line-height: 1.43rem; border-radius: 2px; font-size: 0.85rem; overflow-wrap: normal; margin: 0.8rem 0px !important; padding: 0.3rem 0px !important; background-color: rgb(248, 248, 248) !important; font-family: "Roboto Mono", "Source Sans Pro", Monaco, courier, monospace !important; }
-#write .CodeMirror-wrap .CodeMirror-code pre { padding-left: 12px; }
-#write code, tt { margin: 0px 2px; padding: 2px 4px; border-radius: 2px; font-size: 0.92rem; color: rgb(233, 105, 0); background-color: rgb(248, 248, 248); font-family: "Roboto Mono", "Source Sans Pro", Monaco, courier, monospace !important; }
-#write .md-footnote { background-color: rgb(248, 248, 248); color: rgb(233, 105, 0); }
-#write mark { background-color: rgb(235, 255, 235); border-radius: 2px; padding: 2px 4px; margin: 0px 2px; color: rgb(34, 34, 34); font-weight: 500; }
-#write del { padding: 1px 2px; }
-.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(34, 162, 201); }
-.cm-s-inner .cm-string { color: rgb(34, 162, 201); }
-.md-task-list-item > input { margin-left: -1.3em; }
-@media print {
-  html { font-size: 13px; }
-  table, pre { break-inside: avoid; }
-  pre { overflow-wrap: break-word; }
+@media (max-width: 48em) {
+  blockquote { margin-left: 1rem; margin-right: 0px; padding: 0.5em; }
+  .h1, h1 { font-size: 2.827rem; }
+  .h2, h2 { font-size: 1.999rem; }
+  .h3, h3 { font-size: 1.413rem; }
+  .h4, h4 { font-size: 1.3rem; }
 }
-.md-fences { background-color: rgb(248, 248, 248); }
-#write pre.md-meta-block { padding: 1rem; font-size: 85%; line-height: 1.45; background-color: rgb(247, 247, 247); border: 0px; border-radius: 3px; color: rgb(119, 119, 119); margin-top: 0px !important; }
-.mathjax-block > .code-tooltip { bottom: 0.375rem; }
-#write > h3.md-focus::before { left: -1.5625rem; top: 0.375rem; }
-#write > h4.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
-#write > h5.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
-#write > h6.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
-.md-image > .md-meta { border-radius: 3px; font-family: Consolas, "Liberation Mono", Courier, monospace; padding: 2px 0px 0px 4px; font-size: 0.9em; color: inherit; }
+@media screen and (min-width: 64em) {
+  .h1, h1 { font-size: 4.498rem; }
+  .h2, h2 { font-size: 2.29rem; }
+  .h3, h3 { font-size: 1.9rem; }
+  .h4, h4 { font-size: 1.591rem; }
+  #write > h4.md-focus::before { top: 4px; }
+}
+a { color: rgb(70, 63, 92); text-decoration: underline; }
+#write { padding-top: 2rem; }
+#write pre.md-meta-block { min-height: 35px; padding: 2000px 1em 10px 0px; white-space: pre; border-width: 0px 30px; border-top-style: initial; border-bottom-style: initial; border-top-color: initial; border-bottom-color: initial; border-image: initial; border-left-style: solid; border-left-color: rgb(248, 248, 248); border-right-style: solid; border-right-color: rgb(248, 248, 248); width: 100vw; max-width: calc(100% + 60px); margin-left: -30px; margin-bottom: 2em; margin-top: -2010px; line-height: 1.5em; color: rgb(122, 122, 122); background-color: rgb(250, 250, 250); font-family: Lato, "Helvetica Neue", Helvetica, sans-serif; font-weight: 300; clear: both; font-size: 1.125rem; }
+.md-image > .md-meta { color: rgb(70, 63, 92); }
+.footnotes { font-size: 1.1rem; }
+.md-tag { font-family: Lato, "Helvetica Neue", Helvetica, sans-serif; }
+.code-tooltip { background: white; }
+.code-tooltip-content { font-size: 1.1rem; }
+.task-list { padding-left: 0px; }
+.md-task-list-item { padding-left: 34px; }
+.md-task-list-item > input { width: 1.25rem; height: 1.25rem; display: block; -webkit-appearance: initial; top: -0.5rem; margin-left: -1.6em; margin-top: calc(1rem - 7px); border: none; }
+.md-task-list-item > input:focus { outline: none; box-shadow: none; }
+.md-task-list-item > input::before { border: 1px solid rgb(85, 85, 85); border-radius: 1.5rem; width: 1.5rem; height: 1.5rem; background: rgb(255, 255, 255); content: " "; transition: background-color 200ms ease-in-out 0s; display: block; }
+.md-task-list-item > input:checked::before, .md-task-list-item > input[checked]::before { background: rgb(51, 51, 51); border-width: 2px; display: inline-block; transition: background-color 200ms ease-in-out 0s; }
+.md-task-list-item > input:checked::after, .md-task-list-item > input[checked]::after { opacity: 1; }
+.md-task-list-item > input::after { transition: opacity 0.05s ease-in-out 0s; transform: rotate(-45deg); position: absolute; top: 0.4375rem; left: 0.28125rem; width: 0.9375rem; height: 0.5rem; border-width: 0px 0px 3px 3px; border-bottom-style: solid; border-left-style: solid; border-bottom-color: rgb(255, 255, 255); border-left-color: rgb(255, 255, 255); border-image: initial; border-top-style: initial; border-top-color: initial; border-right-style: initial; border-right-color: initial; content: " "; opacity: 0; }
 .md-tag { color: inherit; }
-.md-toc { margin-top: 20px; padding-bottom: 20px; }
-.sidebar-tabs { border-bottom: none; }
-#typora-quick-open { border: 1px solid rgb(221, 221, 221); background-color: rgb(248, 248, 248); }
-#typora-quick-open-item { background-color: rgb(250, 250, 250); border-color: rgb(254, 254, 254) rgb(229, 229, 229) rgb(229, 229, 229) rgb(238, 238, 238); border-style: solid; border-width: 1px; }
-#md-notification::before { top: 10px; }
-.on-focus-mode blockquote { border-left-color: rgba(85, 85, 85, 0.12); }
-header, .context-menu, .megamenu-content, footer { font-family: "Segoe UI", Arial, sans-serif; }
-.file-node-content:hover .file-node-icon, .file-node-content:hover .file-node-open-state { visibility: visible; }
-.mac-seamless-mode #typora-sidebar { background-color: var(--side-bar-bg-color); }
-.md-lang { color: rgb(180, 101, 77); }
-.html-for-mac .context-menu { --item-hover-bg-color: #E6F0FE; }
+.md-toc:focus .md-toc-content { margin-top: 19px; }
+#typora-sidebar { font-size: 1rem !important; }
+.html-for-mac #typora-sidebar { background-color: white; }
+.outline-content li, .outline-content ul { font-size: 1rem !important; }
+.outline-title { line-height: inherit; margin-top: 10px; }
+.outline-expander { width: 18px; }
+.outline-expander::before { content: "+"; font-family: inherit; color: rgb(108, 108, 108); font-size: 1.5rem; top: 0.1rem; }
+.outline-expander:hover::before { content: "+"; }
+.outline-item-open > .outline-item > .outline-expander::before { content: "-"; }
+#typora-source { font-family: Courier, monospace; color: rgb(106, 106, 106); }
+.os-windows #typora-source { font-family: inherit; }
+.cm-s-typora-default .cm-header, .cm-s-typora-default .cm-property, .CodeMirror.cm-s-typora-default div.CodeMirror-cursor { color: rgb(66, 139, 202); }
+.cm-s-typora-default .cm-atom, .cm-s-typora-default .cm-number { color: rgb(119, 119, 119); }
+.md-diagram-panel { margin-top: 24px; margin-left: -1.2em; }
+.md-mathjax-midline { background: rgb(250, 250, 250); }
+.enable-diagrams pre.md-fences[lang="sequence"] .code-tooltip, .enable-diagrams pre.md-fences[lang="flow"] .code-tooltip, .enable-diagrams pre.md-fences[lang="mermaid"] .code-tooltip { bottom: -3.4em; }
+.dropdown-menu .divider { border-color: rgb(229, 229, 229); }
 
 
 </style>
 </head>
+ <img src="photo-1489389944381-3471b5b30f04.jpg" alt="photo-1489389944381-3471b5b30f04" height="300" width="2000">
 <body class='typora-export os-windows' >
-<img src="photo-1489389944381-3471b5b30f04.jpg" alt="photo-1489389944381-3471b5b30f04" height="300" width="2000">
-<div  id='write'  class = 'is-node'><h1><a name="duration-informed-attention-network-for-speech-synthesis-and-multimodal-applications" class="md-header-anchor"></a><span>Duration Informed Attention Network for Speech Synthesis and Multimodal Applications  </span></h1><h2><a name="h2-heading" class="md-header-anchor"></a><span>h2 Heading</span></h2><h3><a name="h3-heading" class="md-header-anchor"></a><span>h3 Heading</span></h3><h4><a name="h4-heading" class="md-header-anchor"></a><span>h4 Heading</span></h4><h5><a name="h5-heading" class="md-header-anchor"></a><span>h5 Heading</span></h5><h6><a name="h6-heading" class="md-header-anchor"></a><span>h6 Heading</span></h6><h2><a name="horizontal-rules" class="md-header-anchor"></a><span>Horizontal Rules</span></h2><hr /><hr /><hr /><h2><a name="typographic-replacements" class="md-header-anchor"></a><span>Typographic replacements</span></h2><p>&nbsp;</p><video src="Media2.mp4" onerror="this.style.display = 'none';"></video><video src="Media1.mp4" onerror="this.style.display = 'none';"></video><iframe src="https://player.bilibili.com/player.html?aid=63769493&amp;cid=110714225&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="300" height="600" onerror="this.style.display = 'none';"> </iframe><p><span>Enable typographer option to see result.</span></p><p><span>(c) (C) (r) (R) (tm) (TM) (p) (P) +-</span></p><p><span>test.. test... test..... test?..... test!....</span></p><p><span>!!!!!! ???? ,,  -- ---</span></p><p><span>&quot;Smartypants, double quotes&quot; and &#39;single quotes&#39;</span></p><h2><a name="emphasis" class="md-header-anchor"></a><span>Emphasis</span></h2><p><img src='DurIAN_v1-7.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><p><img src='D:\DemoPage\waveRNN3.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><p><img src='DurIAN_style_control-2.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><p><img src='inputphone2.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p><strong><span>This is bold text</span></strong></p><p><strong><span>This is bold text</span></strong></p><p><em><span>This is italic text</span></em></p><p><em><span>This is italic text</span></em></p><p><del><span>Strikethrough</span></del></p><h2><a name="blockquotes" class="md-header-anchor"></a><span>Blockquotes</span></h2><blockquote><p><span>Blockquotes can also be nested...</span></p><blockquote><p><span>...by using additional greater-than signs right next to each other...</span></p><blockquote><p><span>...or with spaces between arrows.</span></p></blockquote></blockquote></blockquote><h2><a name="lists" class="md-header-anchor"></a><span>Lists</span></h2><p><span>Unordered</span></p><ul><li><p><span>Create a list by starting a line with </span><code>+</code><span>, </span><code>-</code><span>, or </span><code>*</code></p></li><li><p><span>Sub-lists are made by indenting 2 spaces:</span></p><ul><li><p><span>Marker character change forces new list start:</span></p><ul><li><span>Ac tristique libero volutpat at</span></li></ul><ul><li><span>Facilisis in pretium nisl aliquet</span></li></ul><ul><li><span>Nulla volutpat aliquam velit</span></li></ul></li></ul></li><li><p><span>Very easy!</span></p></li></ul><p><span>Ordered</span></p><ol start='' ><li><span>Lorem ipsum dolor sit amet</span></li><li><span>Consectetur adipiscing elit</span></li><li><span>Integer molestie lorem at massa</span></li></ol><ol start='' ><li><span>You can use sequential numbers...</span></li><li><span>...or keep all the numbers as </span><code>1.</code></li></ol><p><span>Start numbering with offset:</span></p><ol start='57' ><li><span>foo</span></li><li><span>bar</span></li></ol><h2><a name="code" class="md-header-anchor"></a><span>Code</span></h2><p><span>Inline </span><code>code</code></p><p><span>Indented code</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">// Some comments</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">line 1 of code</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">line 2 of code</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">line 3 of code</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 80px;"></div><div class="CodeMirror-gutters" style="display: none; height: 80px;"></div></div></div></pre><p><span>Block code &quot;fences&quot;</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Sample text here...</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 20px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div></pre><p><span>Syntax highlighting</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="js"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="js"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">var</span> <span class="cm-def">foo</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span> (<span class="cm-def">bar</span>) {</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable-2">bar</span><span class="cm-operator">++</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">};</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable">foo</span>(<span class="cm-number">5</span>));</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 100px;"></div><div class="CodeMirror-gutters" style="display: none; height: 100px;"></div></div></div></pre><h2><a name="tables" class="md-header-anchor"></a><span>Tables</span></h2><figure><table><thead><tr><th><span>Option</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>data</span></td><td><span>path to data files to supply the data that will be passed into templates.</span></td></tr><tr><td><span>engine</span></td><td><span>engine to be used for processing templates. Handlebars is the default.</span></td></tr><tr><td><span>ext</span></td><td><span>extension to be used for dest files.</span></td></tr></tbody></table></figure><p><span>Right aligned columns</span></p><figure><table><thead><tr><th style='text-align:right;' ><span>Option</span></th><th style='text-align:right;' ><span>Description</span></th></tr></thead><tbody><tr><td style='text-align:right;' ><span>data</span></td><td style='text-align:right;' ><span>path to data files to supply the data that will be passed into templates.</span></td></tr><tr><td style='text-align:right;' ><span>engine</span></td><td style='text-align:right;' ><span>engine to be used for processing templates. Handlebars is the default.</span></td></tr><tr><td style='text-align:right;' ><span>ext</span></td><td style='text-align:right;' ><span>extension to be used for dest files.</span></td></tr></tbody></table></figure><h2><a name="links" class="md-header-anchor"></a><span>Links</span></h2><p><a href='http://dev.nodeca.com'><span>link text</span></a></p><p><a href='http://nodeca.github.io/pica/demo/' title='title text!'><span>link with title</span></a></p><p><span>Autoconverted link </span><a href='https://github.com/nodeca/pica' target='_blank' class='url'>https://github.com/nodeca/pica</a><span> (enable linkify to see)</span></p><h2><a name="images" class="md-header-anchor"></a><span>Images</span></h2><p><img src='https://octodex.github.com/images/minion.png' alt='Minion' referrerPolicy='no-referrer' />
-<img src='https://octodex.github.com/images/stormtroopocat.jpg' alt='Stormtroopocat' referrerPolicy='no-referrer' /></p><p><span>Like links, Images also have a footnote style syntax</span></p><p><span class='md-image'><img alt='Alt text' src='https://octodex.github.com/images/dojocat.jpg' title='The Dojocat' referrerPolicy='no-referrer'></img></span></p><p><span>With a reference later in the document defining the URL location:</span></p><h2><a name="plugins" class="md-header-anchor"></a><span>Plugins</span></h2><p><span>The killer feature of </span><code>markdown-it</code><span> is very effective support of</span>
-<a href='https://www.npmjs.org/browse/keyword/markdown-it-plugin'><span>syntax plugins</span></a><span>.</span></p><h3><a name="[emojies](https://github.com/markdown-it/markdown-it-emoji)" class="md-header-anchor"></a><a href='https://github.com/markdown-it/markdown-it-emoji'><span>Emojies</span></a></h3><blockquote><p><span>Classic markup: </span>😉<span> :crush: </span>😢<span> :tear: </span>😆<span> </span>😋</p><p><span>Shortcuts (emoticons): :-) :-( 8-) ;)</span></p></blockquote><p><span>see </span><a href='https://github.com/markdown-it/markdown-it-emoji#change-output'><span>how to change output</span></a><span> with twemoji.</span></p><h3><a name="[subscript](https://github.com/markdown-it/markdown-it-sub)-/-[superscript](https://github.com/markdown-it/markdown-it-sup)" class="md-header-anchor"></a><a href='https://github.com/markdown-it/markdown-it-sub'><span>Subscript</span></a><span> / </span><a href='https://github.com/markdown-it/markdown-it-sup'><span>Superscript</span></a></h3><ul><li><span>19^th^</span></li><li><span>H~2~O</span></li></ul><h3><a name="[\<ins>](https://github.com/markdown-it/markdown-it-ins)" class="md-header-anchor"></a><a href='https://github.com/markdown-it/markdown-it-ins'><span>&lt;</span><span>ins&gt;</span></a></h3><p><span>++Inserted text++</span></p><h3><a name="[\<mark>](https://github.com/markdown-it/markdown-it-mark)" class="md-header-anchor"></a><a href='https://github.com/markdown-it/markdown-it-mark'><span>&lt;</span><span>mark&gt;</span></a></h3><p><span>==Marked text==</span></p><h3><a name="[footnotes](https://github.com/markdown-it/markdown-it-footnote)" class="md-header-anchor"></a><a href='https://github.com/markdown-it/markdown-it-footnote'><span>Footnotes</span></a></h3><p><span>Footnote 1 link</span><sup class='md-footnote'><a href='#dfref-footnote-1' name='ref-footnote-1'>1</a></sup><span>.</span></p><p><span>Footnote 2 link</span><sup class='md-footnote'><a href='#dfref-footnote-2' name='ref-footnote-2'>2</a></sup><span>.</span></p><p><span>Inline footnote^[Text of inline footnote] definition.</span></p><p><span>Duplicated footnote reference</span><sup class='md-footnote'><a href='#dfref-footnote-2-1' name='ref-footnote-2-1'>2</a></sup><span>.</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">and multiple paragraphs.</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 20px;"></div><div class="CodeMirror-gutters" style="display: none; height: 20px;"></div></div></div></pre><h3><a name="[definition-lists](https://github.com/markdown-it/markdown-it-deflist)" class="md-header-anchor"></a><a href='https://github.com/markdown-it/markdown-it-deflist'><span>Definition lists</span></a></h3><p><span>Term 1</span></p><p><span>:   Definition 1</span>
-<span>with lazy continuation.</span></p><p><span>Term 2 with </span><em><span>inline markup</span></em></p><p><span>:   Definition 2</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  { some code, part of Definition 2 }</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Third paragraph of definition 2.</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 60px;"></div><div class="CodeMirror-gutters" style="display: none; height: 60px;"></div></div></div></pre><p><em><span>Compact style:</span></em></p><p><span>Term 1</span>
-<span>  ~ Definition 1</span></p><p><span>Term 2</span>
-<span>  ~ Definition 2a</span>
-<span>  ~ Definition 2b</span></p><h3><a name="[abbreviations](https://github.com/markdown-it/markdown-it-abbr)" class="md-header-anchor"></a><a href='https://github.com/markdown-it/markdown-it-abbr'><span>Abbreviations</span></a></h3><p><span>This is HTML abbreviation example.</span></p><p><span>It converts &quot;HTML&quot;, but keep intact partial entries like &quot;xxxHTMLyyy&quot; and so on.</span></p><p><span>*[HTML]: Hyper Text Markup Language</span></p><h3><a name="[custom-containers](https://github.com/markdown-it/markdown-it-container)" class="md-header-anchor"></a><a href='https://github.com/markdown-it/markdown-it-container'><span>Custom containers</span></a></h3><p><span>::: warning</span>
-<em><span>here be dragons</span></em>
-<span>:::</span></p><div class='footnotes-area'  ><hr/>
-<div class='footnote-line'><span class='md-fn-count'>1</span> <span>Footnote </span><strong><span>can have markup</span></strong><a name='dfref-footnote-1' href='#ref-footnote-1' title='back to document' class='reversefootnote' >↩</a></div>
-<div class='footnote-line'><span class='md-fn-count'>2</span> <span>Footnote text.</span><a name='dfref-footnote-2' href='#ref-footnote-2' title='back to document' class='reversefootnote' >↩</a><a name='dfref-footnote-2-1' href='#ref-footnote-2-1' title='back to document' class='reversefootnote' >↩</a></div></div></div>
+<div  id='write'  class = 'is-node'><h1><a name="durian:-duration-informed-attention-network-for-multimodal-speech-synthesis" class="md-header-anchor"></a><span>DurIAN: Duration Informed Attention Network For Multimodal Speech Synthesis </span></h1><p>&nbsp;</p><p><span>we present a generic and robust multimodal speech synthesis system that produces highly natural speech and facial expression simultaneously. The key part of this system is Duration Informed Attention Network (DurIAN), an autoregressive model where the alignments between text and acoustic features are inferred from a duration model rather than the end-to-end attention mechanism which accounts for various unavoidable artifacts in current end-to-end based speech synthesis systems. At the mean time, DurIAN can be used to generate high quality facial expression which can be synchronized with generated speech with/without parallel speech and face data. To improve the efficiency of speech generation, we also propose a multi-band synchronized generation strategy on top of WaveRNN model. The proposed Multi-band WaveRNN effectively reduces the total computational costs and able to generate audio that is 10 times faster than real time on single CPU. We show that DurIAN could generate highly natural speech that is on par with current state of the art end-to-end method, while at the same time avoiding word skipping or repeating errors caused by end-to-end attention mechanism. Finally, a simple yet effective approach for fine-grained control of expressiveness of speech and facial expression in supervised scenarios is introduced. </span></p><p>&nbsp;</p><p>&nbsp;</p><p><img src='D:\DemoPage\DurIAN_v1-7.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p><strong><span>The Address of the PDF paper can be found at : </span><a href='https://www' target='_blank' class='url'>https://www</a><span>.</span></strong></p><p>&nbsp;</p><p><strong><span>All Demos below including commentary speech ,facial expression and mouth shape are generate by proposed DurIAN model.</span></strong></p><h6><a name="" class="md-header-anchor"></a></h6><h2><a name="demo-1-:-live-game-commentary" class="md-header-anchor"></a><span>Demo 1 : Live Game Commentary </span></h2><p>&nbsp;</p><video src="D:\DemoPage\Media1.mp4" onerror="this.style.display = 'none';"></video><iframe src="https://player.bilibili.com/player.html?aid=63769493&amp;cid=110714225&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="300" height="600" onerror="this.style.display = 'none';"> </iframe><p>&nbsp;</p><p>&nbsp;</p><iframe width="500" height="500" src="https://www.youtube.com/embed/wYrAdcln5IY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" onerror="this.style.display = 'none';"></iframe><p>&nbsp;</p><p>&nbsp;</p><h2><a name="demo-2-:-talking-head-for-news-broadcasting" class="md-header-anchor"></a><span>Demo 2 : Talking head for News broadcasting</span></h2><p>&nbsp;</p><video width="800" height="500" src="D:\DemoPage\Media2.mp4" onerror="this.style.display = 'none';"></video><p>&nbsp;</p><h2><a name="demo-3-:-emotional-control-for-talking-head" class="md-header-anchor"></a><span>Demo 3 : Emotional Control for talking head </span></h2><p>&nbsp;</p><video width="800" height="500" src="Media3-2h.mp4" onerror="this.style.display = 'none';"></video><video src="Media3-1.MP4" onerror="this.style.display = 'none';"></video><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h2><a name="demo-4-:-male-and-female-mandarin-synthesis-speech" class="md-header-anchor"></a><span>Demo 4 : Male and Female Mandarin Synthesis Speech </span></h2><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h2><a name="demo-5-:-style-control-synthesis-speech" class="md-header-anchor"></a><span>Demo 5 : Style Control Synthesis Speech </span></h2><p>&nbsp;</p><p>&nbsp;</p></div>
 </body>
 </html>
