@@ -237,6 +237,150 @@ a { color: rgb(70, 63, 92); text-decoration: underline; }
 </head>
 <img src="photo-2.png"  height="400" width="1000"><img src="photo-2.png"  height="400" width="1000"><img src="photo-2.png"  height="400" width="1000">
 <body class='typora-export os-windows' >
-<div  id='write'  class = 'is-node'><h1><a name="durian-:-duration-informed-attention-network" class="md-header-anchor"></a><span>DurIAN : Duration Informed Attention Network </span></h1><p><img src='D:\DemoPage\photo-1489389944381-3471b5b30f04.jpg' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p><span>we present a generic and robust multimodal speech synthesis system that produces highly natural speech and facial expression simultaneously. The key part of this system is Duration Informed Attention Network (DurIAN), an autoregressive model where the alignments between text and acoustic features are inferred from a duration model rather than the end-to-end attention mechanism which accounts for various unavoidable artifacts in current end-to-end based speech synthesis systems. At the mean time, DurIAN can be used to generate high quality facial expression which can be synchronized with generated speech with/without parallel speech and face data. To improve the efficiency of speech generation, we also propose a multi-band synchronized generation strategy on top of WaveRNN model. The proposed Multi-band WaveRNN effectively reduces the total computational costs and able to generate audio that is 10 times faster than real time on single CPU. We show that DurIAN could generate highly natural speech that is on par with current state of the art end-to-end method, while at the same time avoiding word skipping or repeating errors caused by end-to-end attention mechanism. Finally, a simple yet effective approach for fine-grained control of expressiveness of speech and facial expression in supervised scenarios is introduced. </span></p><p>&nbsp;</p><p><img src='DurIAN_v1-7.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p><strong><span>The Address of the PDF paper can be found at : </span><a href='https://www' target='_blank' class='url'>https://www</a><span>.</span></strong></p><p>&nbsp;</p><p><strong><span>All Demos below including commentary speech ,facial expression and mouth shape are generate by proposed DurIAN model.</span></strong></p><p>&nbsp;</p><p><span>################################################################</span></p><h3><a name="male-and-female-mandarin-synthesis-speech" class="md-header-anchor"></a><span>Male and Female Mandarin Synthesis Speech </span></h3><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p><span>################################################################</span></p><h3><a name="style-control-synthesis-speech" class="md-header-anchor"></a><span>Style Control Synthesis Speech </span></h3><p><img src='22.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><audio id="audio" controls="" preload="none" onerror="this.style.display = 'none';"><source id="mp3" src="Media211.mp3"></audio><audio id="audio" controls="" preload="none" onerror="this.style.display = 'none';"><source id="mp3" src="Media212.mp3"></audio><p><span>#################################</span></p><h3><a name="live-game-commentary---(durian-+-wavernn)" class="md-header-anchor"></a><span>Live Game Commentary   (DurIAN + WaveRNN)</span></h3><iframe width="1000" height="500" src="https://www.youtube.com/embed/30iXxgvvlkg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" onerror="this.style.display = 'none';"></iframe><p>&nbsp;</p><p><span>#################################</span></p><h3><a name="talking-head-for-news-broadcasting---(durian-+-wavernn)" class="md-header-anchor"></a><span>Talking head for News broadcasting   (DurIAN + WaveRNN)</span></h3><iframe width="560" height="315" src="https://www.youtube.com/embed/K3v_-u53lQQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" onerror="this.style.display = 'none';"></iframe><p>&nbsp;</p><p><span>##################################</span></p><h3><a name="emotional-control-for-talking-head" class="md-header-anchor"></a><span>Emotional Control for talking head </span></h3><p><strong><span>Neutral</span></strong><span>    (DurIAN + Griffin-lim)</span></p><iframe width="560" height="315" src="https://www.youtube.com/embed/JtjV37OelXM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" onerror="this.style.display = 'none';"></iframe><hr /><p><strong><span>Joyful</span></strong><span>  (DurIAN + Griffin-lim)</span></p><iframe width="560" height="315" src="https://www.youtube.com/embed/UE0g34Pdxlw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" onerror="this.style.display = 'none';"></iframe><hr /><p><strong><span>Angry</span></strong><span>          (DurIAN + Griffin-lim)</span></p><iframe width="560" height="315" src="https://www.youtube.com/embed/N7X6mj-8rtU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" onerror="this.style.display = 'none';"></iframe><hr /><p><span>**Sad              (DurIAN + Griffin-lim)</span></p><iframe width="560" height="315" src="https://www.youtube.com/embed/pdYeiMitbkk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" onerror="this.style.display = 'none';"></iframe><hr /><p><strong><span>Live commentary</span></strong><span>  （DurIAN + WaveRNN）</span></p><iframe width="560" height="315" src="https://www.youtube.com/embed/PptNj5xBzHA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" onerror="this.style.display = 'none';"></iframe><hr /><p><strong><span>Passionate Live commentary</span></strong><span>  （DurIAN + WaveRNN）</span></p><iframe width="560" height="315" src="https://www.youtube.com/embed/flNL8kIY-TM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" onerror="this.style.display = 'none';"></iframe><p>&nbsp;</p><p>&nbsp;</p><h2><a name="" class="md-header-anchor"></a></h2><p>&nbsp;</p><p>&nbsp;</p></div>
+<div  id='write'  class = 'is-node'><h1><a name="durian-:-duration-informed-attention-network" class="md-header-anchor"></a><span>DurIAN : Duration Informed Attention Network </span></h1><p>&nbsp;</p><p><strong><em><span>Chengzhu Yu, Heng Lu, Na Hu, Meng Yu, Chao Weng, Kun Xu, Peng Liu, Shiyin Kang, Deyi Tuo, Guangzhi Lei, Dan Su, Dong Yu</span></em></strong></p><p><span> </span><strong><span>Tencent AI Lab</span></strong></p><p>&nbsp;</p><p><img src='D:\DemoPage\photo-1489389944381-3471b5b30f04.jpg' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p><span>we present a generic and robust multimodal speech synthesis system that produces highly natural speech and facial expression simultaneously. The key part of this system is Duration Informed Attention Network (DurIAN), an autoregressive model where the alignments between text and acoustic features are inferred from a duration model rather than the end-to-end attention mechanism which accounts for various unavoidable artifacts in current end-to-end based speech synthesis systems. At the mean time, DurIAN can be used to generate high quality facial expression which can be synchronized with generated speech with/without parallel speech and face data. To improve the efficiency of speech generation, we also propose a multi-band synchronized generation strategy on top of WaveRNN model. The proposed Multi-band WaveRNN effectively reduces the total computational costs and able to generate audio that is 10 times faster than real time on single CPU. We show that DurIAN could generate highly natural speech that is on par with current state of the art end-to-end method, while at the same time avoiding word skipping or repeating errors caused by end-to-end attention mechanism. Finally, a simple yet effective approach for fine-grained control of expressiveness of speech and facial expression in supervised scenarios is introduced. </span></p><p>&nbsp;</p><p><img src='DurIAN_v1-7.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p><strong><span>The Address of the PDF paper can be found at : </span><a href='https://www' target='_blank' class='url'>https://www</a><span>.</span></strong></p><p>&nbsp;</p><p><strong><span>All Demos below including commentary speech ,facial expression and mouth shape are generate by proposed DurIAN model.</span></strong></p><p>&nbsp;</p><p><span>################################</span></p><h3><a name="male-and-female-mandarin-synthesis-speech" class="md-header-anchor"></a><span>Male and Female Mandarin Synthesis Speech </span></h3><p>&nbsp;</p><p><strong><em><span>Female Synthesis Voice</span></em></strong><span>                   </span></p><p><span>  DurIAN                                                            Tacotron-2                                                                              </span></p><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test01.npy.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test01.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test03.npy.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test03.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test04.npy.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test04.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test05.npy.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test05.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test06.npy.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test06.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test07.npy.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test07.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test10.npy.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test10.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test11.npy.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test11.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test12.npy.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test12.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test13.npy.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="test13.wav" type="audio/wav">
+</audio>
+</div><p>&nbsp;</p><p>&nbsp;</p><p><strong><em><span>Male Synthesis Voice</span></em></strong><span>                     </span></p><p><span>DurIAN                                                           Tacotron-2</span></p><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="mig_feifei_1.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="1.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="mig_feifei_2.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="2.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="mig_feifei_3.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="3.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="mig_feifei_4.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="4.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="mig_feifei_5.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="5.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="mig_feifei_6.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="6.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="mig_feifei_7.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="7.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="mig_feifei_8.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="8.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="mig_feifei_9.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="9.wav" type="audio/wav">
+</audio>
+</div><div nowrap="">
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="mig_feifei_10.wav" type="audio/wav">
+</audio>
+<audio controls="" onerror="this.style.display = 'none';">
+<source src="10.wav" type="audio/wav">
+</audio>
+</div><p>&nbsp;</p><p>&nbsp;</p><h3><a name="style-control-synthesis-speech" class="md-header-anchor"></a><span>Style Control Synthesis Speech </span></h3><p><img src='22.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><audio controls="" onerror="this.style.display = 'none';">
+	<source src="Media211.wav" type="audio/wav">
+</audio><audio controls="" onerror="this.style.display = 'none';">
+	<source src="Media212.wav" type="audio/wav">
+</audio><p>&nbsp;</p><h3><a name="live-game-commentary---(durian-+-wavernn)" class="md-header-anchor"></a><span>Live Game Commentary   (DurIAN + WaveRNN)</span></h3><iframe width="1000" height="500" src="https://www.youtube.com/embed/30iXxgvvlkg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" onerror="this.style.display = 'none';"></iframe><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h3><a name="talking-head-for-news-broadcasting---(durian-+-wavernn)" class="md-header-anchor"></a><span>Talking head for News broadcasting   (DurIAN + WaveRNN)</span></h3><iframe width="560" height="315" src="https://www.youtube.com/embed/K3v_-u53lQQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" onerror="this.style.display = 'none';"></iframe><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h3><a name="emotional-control-for-talking-head" class="md-header-anchor"></a><span>Emotional Control for talking head </span></h3><p><strong><span>Neutral</span></strong><span>    (DurIAN + Griffin-lim)</span></p><iframe width="560" height="315" src="https://www.youtube.com/embed/JtjV37OelXM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" onerror="this.style.display = 'none';"></iframe><hr /><p><strong><span>Joyful</span></strong><span>  (DurIAN + Griffin-lim)</span></p><iframe width="560" height="315" src="https://www.youtube.com/embed/UE0g34Pdxlw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" onerror="this.style.display = 'none';"></iframe><hr /><p><strong><span>Angry</span></strong><span>          (DurIAN + Griffin-lim)</span></p><iframe width="560" height="315" src="https://www.youtube.com/embed/N7X6mj-8rtU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" onerror="this.style.display = 'none';"></iframe><hr /><p><span>**Sad              (DurIAN + Griffin-lim)</span></p><iframe width="560" height="315" src="https://www.youtube.com/embed/pdYeiMitbkk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" onerror="this.style.display = 'none';"></iframe><hr /><p><strong><span>Live commentary</span></strong><span>  （DurIAN + WaveRNN）</span></p><iframe width="560" height="315" src="https://www.youtube.com/embed/PptNj5xBzHA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" onerror="this.style.display = 'none';"></iframe><hr /><p><strong><span>Passionate Live commentary</span></strong><span>  （DurIAN + WaveRNN）</span></p><iframe width="560" height="315" src="https://www.youtube.com/embed/flNL8kIY-TM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" onerror="this.style.display = 'none';"></iframe><p>&nbsp;</p><p>&nbsp;</p><h2><a name="" class="md-header-anchor"></a></h2><p>&nbsp;</p><p>&nbsp;</p></div>
 </body>
 </html>
